@@ -7,23 +7,27 @@
 
     internal class InputFileFactory
     {
-        public static IImportableFile Create(string ext, bool validation = false)
+        public static IImportableFile Create(string extension, bool validation = false)
         {
             IImportableFile inputFile;
 
-            switch (ext.ToLower())
+            switch (extension.ToLower())
             {
                 case ".xml":
                     inputFile = new LandXmlFile();
+
                     return inputFile;
-                    case ".jxl":
+                case ".jxl":
                     inputFile = new JxlFile();
+
                     return inputFile;
                 case ".sdr":
                     inputFile = new SdrFile(validation);
+
                     return inputFile;
                 default:
                     inputFile = new LandXmlFile();
+
                     return inputFile;
             }
         }

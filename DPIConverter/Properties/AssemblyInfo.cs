@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © 2015 by SixEightOne.eu")]
 [assembly: AssemblyTrademark("SixEightOne")]
 [assembly: AssemblyCulture("")]
+[assembly: InternalsVisibleTo("DPIConverter.Tests")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
