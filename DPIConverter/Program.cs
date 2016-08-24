@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using System.Windows.Forms;
-    using DpiConverter.Forms;
+    using DpiConverter.Presenters;
 
     internal static class Program
     {

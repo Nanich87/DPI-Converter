@@ -1,4 +1,4 @@
-﻿namespace DpiConverter.Forms
+﻿namespace DpiConverter.Presenters
 {
     using System;
     using System.ComponentModel;

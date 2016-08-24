@@ -52,7 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\export-icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\export-icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -71,32 +71,32 @@
     <Compile Include="Files\Exportable\DpiFile.cs" />
     <Compile Include="Factories\InputFileFactory.cs" />
     <Compile Include="Files\Importable\JxlFile.cs" />
-    <Compile Include="Files\Exportable\Contracts\IExportableFile.cs" />
+    <Compile Include="Contracts\Files\IExportableFile.cs" />
     <Compile Include="Files\Importable\LandXmlFile.cs" />
     <Compile Include="Helpers\LandXmlHelper.cs" />
     <Compile Include="Helpers\TrimbleJobXmlHelper.cs" />
-    <Compile Include="Forms\MainPresenter.cs">
+    <Compile Include="Presenters\MainPresenter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainPresenter.Designer.cs">
+    <Compile Include="Presenters\MainPresenter.Designer.cs">
       <DependentUpon>MainPresenter.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Observation.cs" />
-    <Compile Include="Files\Importable\Contracts\IImportableFile.cs" />
+    <Compile Include="Contracts\Files\IImportableFile.cs" />
     <Compile Include="Data\ObservationPurpose.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Files\Importable\SdrFile.cs" />
-    <Compile Include="Forms\SettingsPresenter.cs">
+    <Compile Include="Presenters\SettingsPresenter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SettingsPresenter.Designer.cs">
+    <Compile Include="Presenters\SettingsPresenter.Designer.cs">
       <DependentUpon>SettingsPresenter.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Station.cs" />
     <Compile Include="Data\TargetRecord.cs" />
     <Compile Include="Helpers\Utilities.cs" />
-    <EmbeddedResource Include="Forms\MainPresenter.resx">
+    <EmbeddedResource Include="Presenters\MainPresenter.resx">
       <DependentUpon>MainPresenter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -109,7 +109,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\SettingsPresenter.resx">
+    <EmbeddedResource Include="Presenters\SettingsPresenter.resx">
       <DependentUpon>SettingsPresenter.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -126,7 +126,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\export-icon.ico" />
+    <Content Include="Resources\Icons\export-icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SerialPortTerminal\SerialPortTerminal.csproj">

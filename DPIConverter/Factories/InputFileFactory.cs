@@ -2,8 +2,8 @@
 {
     using System;
     using System.Linq;
+    using DpiConverter.Contracts.Files;
     using DpiConverter.Files.Importable;
-    using DpiConverter.Files.Importable.Contracts;
 
     internal class InputFileFactory
     {

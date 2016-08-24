@@ -1,4 +1,4 @@
-﻿namespace DpiConverter.Forms
+﻿namespace DpiConverter.Presenters
 {
     using System;
     using System.ComponentModel;
@@ -7,10 +7,9 @@
     using System.Linq;
     using System.Text;
     using System.Windows.Forms;
+    using DpiConverter.Contracts.Files;
     using DpiConverter.Data;
     using DpiConverter.Files.Exportable;
-    using DpiConverter.Files.Exportable.Contracts;
-    using DpiConverter.Files.Importable.Contracts;
     using DpiConverter.Helpers;
 
     public partial class MainPresenter : Form

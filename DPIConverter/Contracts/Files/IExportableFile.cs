@@ -1,4 +1,4 @@
-﻿namespace DpiConverter.Files.Exportable.Contracts
+﻿namespace DpiConverter.Contracts.Files
 {
     using System;
     using System.Linq;

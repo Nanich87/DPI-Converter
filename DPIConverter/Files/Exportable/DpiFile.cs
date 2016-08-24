@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using DpiConverter.Contracts.Files;
     using DpiConverter.Data;
-    using DpiConverter.Files.Exportable.Contracts;
 
     internal class DpiFile : IExportableFile
     {

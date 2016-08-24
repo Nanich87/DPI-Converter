@@ -6,8 +6,8 @@
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using DpiConverter.Contracts.Files;
     using DpiConverter.Data;
-    using DpiConverter.Files.Importable.Contracts;
 
     internal class SdrFile : IImportableFile
     {

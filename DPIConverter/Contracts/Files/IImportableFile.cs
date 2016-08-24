@@ -1,4 +1,4 @@
-﻿namespace DpiConverter.Files.Importable.Contracts
+﻿namespace DpiConverter.Contracts.Files
 {
     using System;
     using System.Collections.Generic;

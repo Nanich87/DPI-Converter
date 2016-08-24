@@ -1,4 +1,6 @@
-﻿namespace DpiConverter.Forms
+﻿using DpiConverter.Presenters;
+
+namespace DpiConverter.Presenters
 {
     public partial class MainPresenter
     {

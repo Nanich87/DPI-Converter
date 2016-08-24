@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
+    using DpiConverter.Contracts.Files;
     using DpiConverter.Data;
-    using DpiConverter.Files.Importable.Contracts;
     using DpiConverter.Helpers;
 
     internal class JxlFile : IImportableFile
