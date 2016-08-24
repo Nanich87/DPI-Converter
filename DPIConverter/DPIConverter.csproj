@@ -129,7 +129,7 @@
     <Content Include="Images\export-icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Serial Port Terminal\SerialPortTerminal.csproj">
+    <ProjectReference Include="..\SerialPortTerminal\SerialPortTerminal.csproj">
       <Project>{bbe71346-25bb-4d3d-b91e-ee027947f8d9}</Project>
       <Name>SerialPortTerminal</Name>
     </ProjectReference>

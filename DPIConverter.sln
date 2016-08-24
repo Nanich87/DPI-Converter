@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPIConverter", "DPIConverte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortTerminal", "SerialPortTerminal\SerialPortTerminal.csproj", "{BBE71346-25BB-4D3D-B91E-EE027947F8D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPIConverter.Tests", "DPIConverter.Tests\DPIConverter.Tests.csproj", "{FD3282B8-E6B0-4001-91D2-A00F698C8EA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FEB0F27A-3FC4-44EA-A144-2C29C611C763}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{BBE71346-25BB-4D3D-B91E-EE027947F8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBE71346-25BB-4D3D-B91E-EE027947F8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBE71346-25BB-4D3D-B91E-EE027947F8D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD3282B8-E6B0-4001-91D2-A00F698C8EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD3282B8-E6B0-4001-91D2-A00F698C8EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD3282B8-E6B0-4001-91D2-A00F698C8EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD3282B8-E6B0-4001-91D2-A00F698C8EA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
