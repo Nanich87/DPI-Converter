@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPIConverter", "DPI Converter\DPIConverter.csproj", "{E52CC41D-C0EE-4F09-ABBF-9F6919290D9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPIConverter", "DPIConverter\DPIConverter.csproj", "{E52CC41D-C0EE-4F09-ABBF-9F6919290D9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortTerminal", "Serial Port Terminal\SerialPortTerminal.csproj", "{BBE71346-25BB-4D3D-B91E-EE027947F8D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortTerminal", "SerialPortTerminal\SerialPortTerminal.csproj", "{BBE71346-25BB-4D3D-B91E-EE027947F8D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
