@@ -1,10 +1,9 @@
 ﻿namespace DpiConverter.Helpers
 {
-    using System;
     using System.ComponentModel;
     using System.Linq;
     using System.Xml.Linq;
-    using DpiConverter.Data;
+    using Data;
 
     internal class LandXmlHelper
     {
@@ -23,11 +22,13 @@
             }
         }
 
-        public static BindingList<Observation> GetObservations(XElement station)
+        public static BindingList<Observation> ParseObservations(XElement station)
         {
             BindingList<Observation> observationsList = new BindingList<Observation>();
 
-            foreach (var observation in station.Elements().Where(x => x.Name.LocalName == "RawObservation"))
+            var rawObservations = station.Elements().Where(x => x.Name.LocalName == "RawObservation");
+
+            foreach (var observation in rawObservations)
             {
                 var observationPointFeature = observation.Elements().FirstOrDefault(x => x.Name.LocalName == "Feature");
 

@@ -1,14 +1,11 @@
 ﻿namespace DpiConverter.Helpers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Xml;
     using System.Xml.Linq;
     using System.Xml.Schema;
-    using DpiConverter.Data;
 
-    internal class Utilities
+    internal class XmlHelper
     {
         public static XDocument CreateXmlDocument(string fileName, string shemaLocation, bool validateInputFile = false)
         {
@@ -30,33 +27,6 @@
             }
 
             return XDocument.Load(fileName);
-        }
-
-        public static int ChangePointCode(string oldCode, string newCode, ICollection<Station> stationsList)
-        {
-            int affectedCodesCount = 0;
-
-            foreach (var station in stationsList)
-            {
-                if (station.PointCode.ToLower() == oldCode.ToLower())
-                {
-                    station.PointCode = newCode;
-
-                    affectedCodesCount++;
-                }
-
-                foreach (var observation in station.Observations)
-                {
-                    if (observation.PointCode.ToLower() == oldCode.ToLower())
-                    {
-                        observation.PointCode = newCode;
-
-                        affectedCodesCount++;
-                    }
-                }
-            }
-
-            return affectedCodesCount;
         }
     }
 }

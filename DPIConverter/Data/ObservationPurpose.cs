@@ -1,9 +1,6 @@
 ﻿namespace DpiConverter.Data
 {
-    using System;
-    using System.Linq;
-
-    internal enum ObservationPurpose
+    public enum ObservationPurpose
     {
         Backsight,
         Traverse,

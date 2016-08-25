@@ -1,11 +1,9 @@
 ﻿namespace DpiConverter.Files.Exportable
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using DpiConverter.Contracts.Files;
-    using DpiConverter.Data;
+    using Contracts.Files;
+    using Data;
 
     internal class DpiFile : IExportableFile
     {

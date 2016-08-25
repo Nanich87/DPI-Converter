@@ -1,11 +1,10 @@
 ﻿namespace DpiConverter.Helpers
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
     using System.Xml.Linq;
-    using DpiConverter.Data;
+    using Data;
 
     internal class TrimbleJobXmlHelper
     {

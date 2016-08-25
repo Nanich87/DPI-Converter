@@ -7,10 +7,9 @@
     using System.Linq;
     using System.Text;
     using System.Windows.Forms;
-    using DpiConverter.Contracts.Files;
-    using DpiConverter.Data;
-    using DpiConverter.Files.Exportable;
-    using DpiConverter.Helpers;
+    using Contracts.Files;
+    using Data;
+    using Files.Exportable;
 
     public partial class MainPresenter : Form
     {
@@ -165,7 +164,7 @@
                 this.uxTextBoxOldCodeValue.BackColor = Color.Empty;
                 this.uxTextBoxNewCodeValue.BackColor = Color.Empty;
 
-                int affectedCodesCount = Utilities.ChangePointCode(this.uxTextBoxOldCodeValue.Text, this.uxTextBoxNewCodeValue.Text, Databases.DefaultDatabase.GetInstance().Stations);
+                int affectedCodesCount = Databases.DefaultDatabase.GetInstance().ChangePointCode(this.uxTextBoxOldCodeValue.Text, this.uxTextBoxNewCodeValue.Text);
 
                 this.stationsBindingSource.ResetBindings(false);
 

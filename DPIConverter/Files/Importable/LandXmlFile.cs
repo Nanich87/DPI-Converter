@@ -1,21 +1,31 @@
 ﻿namespace DpiConverter.Files.Importable
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
     using System.Xml.Linq;
-    using DpiConverter.Contracts.Files;
-    using DpiConverter.Data;
-    using DpiConverter.Helpers;
+    using Contracts.Files;
+    using Data;
+    using Helpers;
 
     internal class LandXmlFile : IImportableFile
     {
         public const string ShemaLocation = "LandXML-1.0.xsd";
 
-        public void Open(string file, ICollection<Station> stationsList)
+        private readonly bool validation = false;
+
+        public LandXmlFile() : this(false)
         {
-            XDocument document = Utilities.CreateXmlDocument(file, LandXmlFile.ShemaLocation, Properties.Settings.Default.ValidateInputFile);
+        }
+
+        public LandXmlFile(bool validation)
+        {
+            this.validation = validation;
+        }
+
+        public void Open(string fileName, ICollection<Station> stationsList)
+        {
+            XDocument document = XmlHelper.CreateXmlDocument(fileName, LandXmlFile.ShemaLocation, this.validation);
 
             var stations = from station in document.Root
                                                    .Elements()
@@ -38,7 +48,7 @@
                     stationPointCode = stationPointFeature.Attribute("code") != null ? stationPointFeature.Attribute("code").Value : string.Empty;
                 }
 
-                BindingList<Observation> observations = LandXmlHelper.GetObservations(station);
+                BindingList<Observation> observations = LandXmlHelper.ParseObservations(station);
 
                 stationsList.Add(new Station(stationIndex, stationPointCode, stationName, instrumentHeight, observations));
                 stationsList.Last().CalculateVerticalAngleError();

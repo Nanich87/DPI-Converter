@@ -1,20 +1,30 @@
 ﻿namespace DpiConverter.Files.Importable
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
-    using DpiConverter.Contracts.Files;
-    using DpiConverter.Data;
-    using DpiConverter.Helpers;
+    using Contracts.Files;
+    using Data;
+    using Helpers;
 
     internal class JxlFile : IImportableFile
     {
         public const string ShemaLocation = "JobXMLSchema-5.64.xsd";
 
+        private readonly bool validation = false;
+
+        public JxlFile() : this(false)
+        {
+        }
+
+        public JxlFile(bool validation)
+        {
+            this.validation = validation;
+        }
+
         public void Open(string file, ICollection<Station> stationsList)
         {
-            XDocument document = Utilities.CreateXmlDocument(file, JxlFile.ShemaLocation, Properties.Settings.Default.ValidateInputFile);
+            XDocument document = XmlHelper.CreateXmlDocument(file, JxlFile.ShemaLocation, this.validation);
 
             ((List<Station>)stationsList).AddRange(TrimbleJobXmlHelper.FindStations(document));
 
@@ -48,6 +58,7 @@
                         Observation currentObservation = new Observation(targetPointCode, targetPointName, targetHeight, horizontalCircle, distance, verticalCircle, targetPointDescription);
 
                         stationsList.FirstOrDefault(s => s.StationIndex == stationIndex).Observations.Add(currentObservation);
+
                         break;
                 }
             }

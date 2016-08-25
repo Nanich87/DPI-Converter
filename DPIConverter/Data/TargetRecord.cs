@@ -1,8 +1,5 @@
 ﻿namespace DpiConverter.Data
 {
-    using System;
-    using System.Linq;
-
     internal class TargetRecord
     {
         private readonly string targetIndex;

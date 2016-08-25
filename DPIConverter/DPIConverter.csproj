@@ -95,7 +95,7 @@
     </Compile>
     <Compile Include="Data\Station.cs" />
     <Compile Include="Data\TargetRecord.cs" />
-    <Compile Include="Helpers\Utilities.cs" />
+    <Compile Include="Helpers\XmlHelper.cs" />
     <EmbeddedResource Include="Presenters\MainPresenter.resx">
       <DependentUpon>MainPresenter.cs</DependentUpon>
     </EmbeddedResource>

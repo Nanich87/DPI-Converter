@@ -1,9 +1,7 @@
 ﻿namespace DpiConverter.Databases
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using DpiConverter.Data;
+    using Data;
 
     internal class DefaultDatabase
     {
@@ -25,6 +23,33 @@
         public static DefaultDatabase GetInstance()
         {
             return DefaultDatabase.Instance;
+        }
+
+        public int ChangePointCode(string oldCode, string newCode)
+        {
+            int affectedCodesCount = 0;
+
+            foreach (var station in this.stations)
+            {
+                if (station.PointCode.ToLower() == oldCode.ToLower())
+                {
+                    station.PointCode = newCode;
+
+                    affectedCodesCount++;
+                }
+
+                foreach (var observation in station.Observations)
+                {
+                    if (observation.PointCode.ToLower() == oldCode.ToLower())
+                    {
+                        observation.PointCode = newCode;
+
+                        affectedCodesCount++;
+                    }
+                }
+            }
+
+            return affectedCodesCount;
         }
     }
 }

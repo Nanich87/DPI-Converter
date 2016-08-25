@@ -1,9 +1,7 @@
 ﻿namespace DpiConverter.Factories
 {
-    using System;
-    using System.Linq;
-    using DpiConverter.Contracts.Files;
-    using DpiConverter.Files.Importable;
+    using Contracts.Files;
+    using Files.Importable;
 
     internal class InputFileFactory
     {
@@ -14,11 +12,11 @@
             switch (extension.ToLower())
             {
                 case ".xml":
-                    inputFile = new LandXmlFile();
+                    inputFile = new LandXmlFile(validation);
 
                     return inputFile;
                 case ".jxl":
-                    inputFile = new JxlFile();
+                    inputFile = new JxlFile(validation);
 
                     return inputFile;
                 case ".sdr":
@@ -26,7 +24,7 @@
 
                     return inputFile;
                 default:
-                    inputFile = new LandXmlFile();
+                    inputFile = new LandXmlFile(validation);
 
                     return inputFile;
             }
