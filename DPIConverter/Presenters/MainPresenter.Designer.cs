@@ -40,13 +40,6 @@ namespace DpiConverter.Presenters
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem uxMenuItemOpenNewSerialPortTerminal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn targetHeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn horizontalAngle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn slopeDistance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zenithAngle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doubleIndexError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointCode;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -93,13 +86,6 @@ namespace DpiConverter.Presenters
             this.uxMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.uxListBoxStations = new System.Windows.Forms.ListBox();
             this.uxDataGridViewObservations = new System.Windows.Forms.DataGridView();
-            this.pointNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targetHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horizontalAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.slopeDistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zenithAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doubleIndexError = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxLabelStations = new System.Windows.Forms.Label();
             this.uxLabelSelectedStation = new System.Windows.Forms.Label();
             this.uxTextBoxSelectedStation = new System.Windows.Forms.TextBox();
@@ -117,6 +103,13 @@ namespace DpiConverter.Presenters
             this.uxGroupBoxChangeRows = new System.Windows.Forms.GroupBox();
             this.uxButtonAddNewObservation = new System.Windows.Forms.Button();
             this.uxButtonDeleteSelectedObservations = new System.Windows.Forms.Button();
+            this.pointNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targetHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horizontalAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.slopeDistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zenithAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doubleIndexError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxDataGridViewObservations)).BeginInit();
             this.uxGroupBoxChangeCode.SuspendLayout();
@@ -130,7 +123,7 @@ namespace DpiConverter.Presenters
             this.uxMenuCategoryEdit,
             this.uxMenuCategoryHelp});
             this.uxMenu.Location = new System.Drawing.Point(0, 0);
-            this.uxMenu.Name = "mainMenu";
+            this.uxMenu.Name = "uxMenu";
             this.uxMenu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.uxMenu.Size = new System.Drawing.Size(752, 24);
             this.uxMenu.TabIndex = 0;
@@ -146,13 +139,13 @@ namespace DpiConverter.Presenters
             this.uxMenuItemSaveFile,
             this.toolStripSeparator2,
             this.uxMenuItemExitApplication});
-            this.uxMenuCategoryFile.Name = "fileMenu";
+            this.uxMenuCategoryFile.Name = "uxMenuCategoryFile";
             this.uxMenuCategoryFile.Size = new System.Drawing.Size(48, 20);
             this.uxMenuCategoryFile.Text = "Файл";
             // 
             // uxMenuItemOpenFile
             // 
-            this.uxMenuItemOpenFile.Name = "fileOpen";
+            this.uxMenuItemOpenFile.Name = "uxMenuItemOpenFile";
             this.uxMenuItemOpenFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.uxMenuItemOpenFile.Size = new System.Drawing.Size(169, 22);
             this.uxMenuItemOpenFile.Text = "Отваряне";
@@ -178,7 +171,7 @@ namespace DpiConverter.Presenters
             // uxMenuItemSaveFile
             // 
             this.uxMenuItemSaveFile.Enabled = false;
-            this.uxMenuItemSaveFile.Name = "fileSave";
+            this.uxMenuItemSaveFile.Name = "uxMenuItemSaveFile";
             this.uxMenuItemSaveFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.uxMenuItemSaveFile.Size = new System.Drawing.Size(169, 22);
             this.uxMenuItemSaveFile.Text = "Запис";
@@ -191,7 +184,7 @@ namespace DpiConverter.Presenters
             // 
             // uxMenuItemExitApplication
             // 
-            this.uxMenuItemExitApplication.Name = "fileExit";
+            this.uxMenuItemExitApplication.Name = "uxMenuItemExitApplication";
             this.uxMenuItemExitApplication.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.uxMenuItemExitApplication.Size = new System.Drawing.Size(169, 22);
             this.uxMenuItemExitApplication.Text = "Изход";
@@ -201,13 +194,13 @@ namespace DpiConverter.Presenters
             // 
             this.uxMenuCategoryEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxMenuItemChangeSettings});
-            this.uxMenuCategoryEdit.Name = "editMenu";
+            this.uxMenuCategoryEdit.Name = "uxMenuCategoryEdit";
             this.uxMenuCategoryEdit.Size = new System.Drawing.Size(88, 20);
             this.uxMenuCategoryEdit.Text = "Редактиране";
             // 
             // uxMenuItemChangeSettings
             // 
-            this.uxMenuItemChangeSettings.Name = "editSettings";
+            this.uxMenuItemChangeSettings.Name = "uxMenuItemChangeSettings";
             this.uxMenuItemChangeSettings.Size = new System.Drawing.Size(134, 22);
             this.uxMenuItemChangeSettings.Text = "Настройки";
             this.uxMenuItemChangeSettings.Click += new System.EventHandler(this.ShowSettingsPresenter);
@@ -216,13 +209,13 @@ namespace DpiConverter.Presenters
             // 
             this.uxMenuCategoryHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxMenuItemAbout});
-            this.uxMenuCategoryHelp.Name = "helpMenu";
+            this.uxMenuCategoryHelp.Name = "uxMenuCategoryHelp";
             this.uxMenuCategoryHelp.Size = new System.Drawing.Size(62, 20);
             this.uxMenuCategoryHelp.Text = "Помощ";
             // 
             // uxMenuItemAbout
             // 
-            this.uxMenuItemAbout.Name = "itemAbout";
+            this.uxMenuItemAbout.Name = "uxMenuItemAbout";
             this.uxMenuItemAbout.Size = new System.Drawing.Size(155, 22);
             this.uxMenuItemAbout.Text = "За програмата";
             this.uxMenuItemAbout.Click += new System.EventHandler(this.ShowAbountMessage);
@@ -233,7 +226,7 @@ namespace DpiConverter.Presenters
             | System.Windows.Forms.AnchorStyles.Left)));
             this.uxListBoxStations.FormattingEnabled = true;
             this.uxListBoxStations.Location = new System.Drawing.Point(14, 66);
-            this.uxListBoxStations.Name = "stationsListBox";
+            this.uxListBoxStations.Name = "uxListBoxStations";
             this.uxListBoxStations.Size = new System.Drawing.Size(139, 368);
             this.uxListBoxStations.TabIndex = 2;
             // 
@@ -260,11 +253,176 @@ namespace DpiConverter.Presenters
             this.doubleIndexError,
             this.pointCode});
             this.uxDataGridViewObservations.Location = new System.Drawing.Point(161, 66);
-            this.uxDataGridViewObservations.Name = "observationsDataGridView";
+            this.uxDataGridViewObservations.Name = "uxDataGridViewObservations";
             this.uxDataGridViewObservations.Size = new System.Drawing.Size(577, 277);
             this.uxDataGridViewObservations.TabIndex = 3;
             this.uxDataGridViewObservations.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EndObservationCellEditEventHandler);
             this.uxDataGridViewObservations.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.ObservationsDataGridViewDataError);
+            // 
+            // uxLabelStations
+            // 
+            this.uxLabelStations.AutoSize = true;
+            this.uxLabelStations.Location = new System.Drawing.Point(14, 40);
+            this.uxLabelStations.Name = "uxLabelStations";
+            this.uxLabelStations.Size = new System.Drawing.Size(57, 13);
+            this.uxLabelStations.TabIndex = 4;
+            this.uxLabelStations.Text = "Станции";
+            // 
+            // uxLabelSelectedStation
+            // 
+            this.uxLabelSelectedStation.AutoSize = true;
+            this.uxLabelSelectedStation.Location = new System.Drawing.Point(158, 40);
+            this.uxLabelSelectedStation.Name = "uxLabelSelectedStation";
+            this.uxLabelSelectedStation.Size = new System.Drawing.Size(62, 13);
+            this.uxLabelSelectedStation.TabIndex = 5;
+            this.uxLabelSelectedStation.Text = "Станция:";
+            // 
+            // uxTextBoxSelectedStation
+            // 
+            this.uxTextBoxSelectedStation.Location = new System.Drawing.Point(226, 37);
+            this.uxTextBoxSelectedStation.MaxLength = 10;
+            this.uxTextBoxSelectedStation.Name = "uxTextBoxSelectedStation";
+            this.uxTextBoxSelectedStation.Size = new System.Drawing.Size(100, 21);
+            this.uxTextBoxSelectedStation.TabIndex = 6;
+            // 
+            // uxLabelInstrumentHeight
+            // 
+            this.uxLabelInstrumentHeight.AutoSize = true;
+            this.uxLabelInstrumentHeight.Location = new System.Drawing.Point(332, 40);
+            this.uxLabelInstrumentHeight.Name = "uxLabelInstrumentHeight";
+            this.uxLabelInstrumentHeight.Size = new System.Drawing.Size(68, 13);
+            this.uxLabelInstrumentHeight.TabIndex = 7;
+            this.uxLabelInstrumentHeight.Text = "Височина:";
+            // 
+            // uxTextBoxInstrumentHeight
+            // 
+            this.uxTextBoxInstrumentHeight.Location = new System.Drawing.Point(406, 37);
+            this.uxTextBoxInstrumentHeight.MaxLength = 7;
+            this.uxTextBoxInstrumentHeight.Name = "uxTextBoxInstrumentHeight";
+            this.uxTextBoxInstrumentHeight.Size = new System.Drawing.Size(100, 21);
+            this.uxTextBoxInstrumentHeight.TabIndex = 8;
+            this.uxTextBoxInstrumentHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // uxCheckBoxUseStation
+            // 
+            this.uxCheckBoxUseStation.AutoSize = true;
+            this.uxCheckBoxUseStation.Location = new System.Drawing.Point(512, 40);
+            this.uxCheckBoxUseStation.Name = "uxCheckBoxUseStation";
+            this.uxCheckBoxUseStation.Size = new System.Drawing.Size(94, 17);
+            this.uxCheckBoxUseStation.TabIndex = 9;
+            this.uxCheckBoxUseStation.Text = "използване";
+            this.uxCheckBoxUseStation.UseVisualStyleBackColor = true;
+            // 
+            // uxLabelProgramVersion
+            // 
+            this.uxLabelProgramVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxLabelProgramVersion.AutoSize = true;
+            this.uxLabelProgramVersion.Location = new System.Drawing.Point(659, 421);
+            this.uxLabelProgramVersion.Name = "uxLabelProgramVersion";
+            this.uxLabelProgramVersion.Size = new System.Drawing.Size(81, 13);
+            this.uxLabelProgramVersion.TabIndex = 10;
+            this.uxLabelProgramVersion.Text = "версия 0.7.3";
+            // 
+            // uxGroupBoxChangeCode
+            // 
+            this.uxGroupBoxChangeCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxGroupBoxChangeCode.Controls.Add(this.uxButtonChangeCode);
+            this.uxGroupBoxChangeCode.Controls.Add(this.uxTextBoxNewCodeValue);
+            this.uxGroupBoxChangeCode.Controls.Add(this.uxTextBoxOldCodeValue);
+            this.uxGroupBoxChangeCode.Controls.Add(this.uxLabelNewCodeValue);
+            this.uxGroupBoxChangeCode.Controls.Add(this.uxLabelOldCodeValue);
+            this.uxGroupBoxChangeCode.Location = new System.Drawing.Point(161, 400);
+            this.uxGroupBoxChangeCode.Name = "uxGroupBoxChangeCode";
+            this.uxGroupBoxChangeCode.Size = new System.Drawing.Size(492, 50);
+            this.uxGroupBoxChangeCode.TabIndex = 11;
+            this.uxGroupBoxChangeCode.TabStop = false;
+            this.uxGroupBoxChangeCode.Text = "Преименуване на кодове";
+            // 
+            // uxButtonChangeCode
+            // 
+            this.uxButtonChangeCode.Location = new System.Drawing.Point(357, 18);
+            this.uxButtonChangeCode.Name = "uxButtonChangeCode";
+            this.uxButtonChangeCode.Size = new System.Drawing.Size(86, 23);
+            this.uxButtonChangeCode.TabIndex = 4;
+            this.uxButtonChangeCode.Text = "Промени";
+            this.uxButtonChangeCode.UseVisualStyleBackColor = true;
+            this.uxButtonChangeCode.Click += new System.EventHandler(this.ChangeFeatureCode);
+            // 
+            // uxTextBoxNewCodeValue
+            // 
+            this.uxTextBoxNewCodeValue.Location = new System.Drawing.Point(250, 20);
+            this.uxTextBoxNewCodeValue.Name = "uxTextBoxNewCodeValue";
+            this.uxTextBoxNewCodeValue.Size = new System.Drawing.Size(100, 21);
+            this.uxTextBoxNewCodeValue.TabIndex = 3;
+            // 
+            // uxTextBoxOldCodeValue
+            // 
+            this.uxTextBoxOldCodeValue.Location = new System.Drawing.Point(78, 20);
+            this.uxTextBoxOldCodeValue.Name = "uxTextBoxOldCodeValue";
+            this.uxTextBoxOldCodeValue.Size = new System.Drawing.Size(100, 21);
+            this.uxTextBoxOldCodeValue.TabIndex = 2;
+            // 
+            // uxLabelNewCodeValue
+            // 
+            this.uxLabelNewCodeValue.AutoSize = true;
+            this.uxLabelNewCodeValue.Location = new System.Drawing.Point(184, 23);
+            this.uxLabelNewCodeValue.Name = "uxLabelNewCodeValue";
+            this.uxLabelNewCodeValue.Size = new System.Drawing.Size(60, 13);
+            this.uxLabelNewCodeValue.TabIndex = 1;
+            this.uxLabelNewCodeValue.Text = "Нов код:";
+            // 
+            // uxLabelOldCodeValue
+            // 
+            this.uxLabelOldCodeValue.AutoSize = true;
+            this.uxLabelOldCodeValue.Location = new System.Drawing.Point(6, 23);
+            this.uxLabelOldCodeValue.Name = "uxLabelOldCodeValue";
+            this.uxLabelOldCodeValue.Size = new System.Drawing.Size(66, 13);
+            this.uxLabelOldCodeValue.TabIndex = 0;
+            this.uxLabelOldCodeValue.Text = "Стар код:";
+            // 
+            // uxButtonCalculateIndexErrors
+            // 
+            this.uxButtonCalculateIndexErrors.Location = new System.Drawing.Point(612, 35);
+            this.uxButtonCalculateIndexErrors.Name = "uxButtonCalculateIndexErrors";
+            this.uxButtonCalculateIndexErrors.Size = new System.Drawing.Size(126, 23);
+            this.uxButtonCalculateIndexErrors.TabIndex = 12;
+            this.uxButtonCalculateIndexErrors.Text = "Индексна грешка";
+            this.uxButtonCalculateIndexErrors.UseVisualStyleBackColor = true;
+            this.uxButtonCalculateIndexErrors.Click += new System.EventHandler(this.CalculateVerticalAngleMisclosureButtonClickedEventHandler);
+            // 
+            // uxGroupBoxChangeRows
+            // 
+            this.uxGroupBoxChangeRows.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxGroupBoxChangeRows.Controls.Add(this.uxButtonAddNewObservation);
+            this.uxGroupBoxChangeRows.Controls.Add(this.uxButtonDeleteSelectedObservations);
+            this.uxGroupBoxChangeRows.Location = new System.Drawing.Point(161, 349);
+            this.uxGroupBoxChangeRows.Name = "uxGroupBoxChangeRows";
+            this.uxGroupBoxChangeRows.Size = new System.Drawing.Size(492, 45);
+            this.uxGroupBoxChangeRows.TabIndex = 13;
+            this.uxGroupBoxChangeRows.TabStop = false;
+            this.uxGroupBoxChangeRows.Text = "Редактиране на измервания";
+            // 
+            // uxButtonAddNewObservation
+            // 
+            this.uxButtonAddNewObservation.Location = new System.Drawing.Point(95, 16);
+            this.uxButtonAddNewObservation.Name = "uxButtonAddNewObservation";
+            this.uxButtonAddNewObservation.Size = new System.Drawing.Size(80, 23);
+            this.uxButtonAddNewObservation.TabIndex = 1;
+            this.uxButtonAddNewObservation.Text = "Добавяне";
+            this.uxButtonAddNewObservation.UseVisualStyleBackColor = true;
+            this.uxButtonAddNewObservation.Click += new System.EventHandler(this.AddNewObservationButtonClickedEventHandler);
+            // 
+            // uxButtonDeleteSelectedObservations
+            // 
+            this.uxButtonDeleteSelectedObservations.Location = new System.Drawing.Point(9, 16);
+            this.uxButtonDeleteSelectedObservations.Name = "uxButtonDeleteSelectedObservations";
+            this.uxButtonDeleteSelectedObservations.Size = new System.Drawing.Size(80, 23);
+            this.uxButtonDeleteSelectedObservations.TabIndex = 0;
+            this.uxButtonDeleteSelectedObservations.Text = "Изтриване";
+            this.uxButtonDeleteSelectedObservations.UseVisualStyleBackColor = true;
+            this.uxButtonDeleteSelectedObservations.Click += new System.EventHandler(this.DeleteSelectedObservationsButtonClickedEventHandler);
             // 
             // pointNumber
             // 
@@ -319,7 +477,7 @@ namespace DpiConverter.Presenters
             // 
             // doubleIndexError
             // 
-            this.doubleIndexError.DataPropertyName = "VerticalAngleError";
+            this.doubleIndexError.DataPropertyName = "VerticalAngleMisclosure";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
             dataGridViewCellStyle6.Format = "N0";
@@ -339,172 +497,7 @@ namespace DpiConverter.Presenters
             this.pointCode.MaxInputLength = 20;
             this.pointCode.Name = "pointCode";
             // 
-            // uxLabelStations
-            // 
-            this.uxLabelStations.AutoSize = true;
-            this.uxLabelStations.Location = new System.Drawing.Point(14, 40);
-            this.uxLabelStations.Name = "stationsLabel";
-            this.uxLabelStations.Size = new System.Drawing.Size(57, 13);
-            this.uxLabelStations.TabIndex = 4;
-            this.uxLabelStations.Text = "Станции";
-            // 
-            // uxLabelSelectedStation
-            // 
-            this.uxLabelSelectedStation.AutoSize = true;
-            this.uxLabelSelectedStation.Location = new System.Drawing.Point(158, 40);
-            this.uxLabelSelectedStation.Name = "selectedStationLabel";
-            this.uxLabelSelectedStation.Size = new System.Drawing.Size(62, 13);
-            this.uxLabelSelectedStation.TabIndex = 5;
-            this.uxLabelSelectedStation.Text = "Станция:";
-            // 
-            // uxTextBoxSelectedStation
-            // 
-            this.uxTextBoxSelectedStation.Location = new System.Drawing.Point(226, 37);
-            this.uxTextBoxSelectedStation.MaxLength = 10;
-            this.uxTextBoxSelectedStation.Name = "selectedStationTextBox";
-            this.uxTextBoxSelectedStation.Size = new System.Drawing.Size(100, 21);
-            this.uxTextBoxSelectedStation.TabIndex = 6;
-            // 
-            // uxLabelInstrumentHeight
-            // 
-            this.uxLabelInstrumentHeight.AutoSize = true;
-            this.uxLabelInstrumentHeight.Location = new System.Drawing.Point(332, 40);
-            this.uxLabelInstrumentHeight.Name = "instrumentHeightLabel";
-            this.uxLabelInstrumentHeight.Size = new System.Drawing.Size(68, 13);
-            this.uxLabelInstrumentHeight.TabIndex = 7;
-            this.uxLabelInstrumentHeight.Text = "Височина:";
-            // 
-            // uxTextBoxInstrumentHeight
-            // 
-            this.uxTextBoxInstrumentHeight.Location = new System.Drawing.Point(406, 37);
-            this.uxTextBoxInstrumentHeight.MaxLength = 9;
-            this.uxTextBoxInstrumentHeight.Name = "instrumentHeightTextBox";
-            this.uxTextBoxInstrumentHeight.Size = new System.Drawing.Size(100, 21);
-            this.uxTextBoxInstrumentHeight.TabIndex = 8;
-            this.uxTextBoxInstrumentHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // uxCheckBoxUseStation
-            // 
-            this.uxCheckBoxUseStation.AutoSize = true;
-            this.uxCheckBoxUseStation.Location = new System.Drawing.Point(512, 40);
-            this.uxCheckBoxUseStation.Name = "useStationCheckBox";
-            this.uxCheckBoxUseStation.Size = new System.Drawing.Size(94, 17);
-            this.uxCheckBoxUseStation.TabIndex = 9;
-            this.uxCheckBoxUseStation.Text = "използване";
-            this.uxCheckBoxUseStation.UseVisualStyleBackColor = true;
-            // 
-            // uxLabelProgramVersion
-            // 
-            this.uxLabelProgramVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.uxLabelProgramVersion.AutoSize = true;
-            this.uxLabelProgramVersion.Location = new System.Drawing.Point(659, 421);
-            this.uxLabelProgramVersion.Name = "programVersionLabel";
-            this.uxLabelProgramVersion.Size = new System.Drawing.Size(81, 13);
-            this.uxLabelProgramVersion.TabIndex = 10;
-            this.uxLabelProgramVersion.Text = "версия 0.7.3";
-            // 
-            // uxGroupBoxChangeCode
-            // 
-            this.uxGroupBoxChangeCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.uxGroupBoxChangeCode.Controls.Add(this.uxButtonChangeCode);
-            this.uxGroupBoxChangeCode.Controls.Add(this.uxTextBoxNewCodeValue);
-            this.uxGroupBoxChangeCode.Controls.Add(this.uxTextBoxOldCodeValue);
-            this.uxGroupBoxChangeCode.Controls.Add(this.uxLabelNewCodeValue);
-            this.uxGroupBoxChangeCode.Controls.Add(this.uxLabelOldCodeValue);
-            this.uxGroupBoxChangeCode.Location = new System.Drawing.Point(161, 400);
-            this.uxGroupBoxChangeCode.Name = "codeEditGroupBox";
-            this.uxGroupBoxChangeCode.Size = new System.Drawing.Size(492, 50);
-            this.uxGroupBoxChangeCode.TabIndex = 11;
-            this.uxGroupBoxChangeCode.TabStop = false;
-            this.uxGroupBoxChangeCode.Text = "Преименуване на кодове";
-            // 
-            // uxButtonChangeCode
-            // 
-            this.uxButtonChangeCode.Location = new System.Drawing.Point(357, 18);
-            this.uxButtonChangeCode.Name = "codeEditButton";
-            this.uxButtonChangeCode.Size = new System.Drawing.Size(86, 23);
-            this.uxButtonChangeCode.TabIndex = 4;
-            this.uxButtonChangeCode.Text = "Промени";
-            this.uxButtonChangeCode.UseVisualStyleBackColor = true;
-            this.uxButtonChangeCode.Click += new System.EventHandler(this.ChangePointCode);
-            // 
-            // uxTextBoxNewCodeValue
-            // 
-            this.uxTextBoxNewCodeValue.Location = new System.Drawing.Point(250, 20);
-            this.uxTextBoxNewCodeValue.Name = "newCodeTextBox";
-            this.uxTextBoxNewCodeValue.Size = new System.Drawing.Size(100, 21);
-            this.uxTextBoxNewCodeValue.TabIndex = 3;
-            // 
-            // uxTextBoxOldCodeValue
-            // 
-            this.uxTextBoxOldCodeValue.Location = new System.Drawing.Point(78, 20);
-            this.uxTextBoxOldCodeValue.Name = "oldCodeTextBox";
-            this.uxTextBoxOldCodeValue.Size = new System.Drawing.Size(100, 21);
-            this.uxTextBoxOldCodeValue.TabIndex = 2;
-            // 
-            // uxLabelNewCodeValue
-            // 
-            this.uxLabelNewCodeValue.AutoSize = true;
-            this.uxLabelNewCodeValue.Location = new System.Drawing.Point(184, 23);
-            this.uxLabelNewCodeValue.Name = "newCodeLabel";
-            this.uxLabelNewCodeValue.Size = new System.Drawing.Size(60, 13);
-            this.uxLabelNewCodeValue.TabIndex = 1;
-            this.uxLabelNewCodeValue.Text = "Нов код:";
-            // 
-            // uxLabelOldCodeValue
-            // 
-            this.uxLabelOldCodeValue.AutoSize = true;
-            this.uxLabelOldCodeValue.Location = new System.Drawing.Point(6, 23);
-            this.uxLabelOldCodeValue.Name = "oldCodeLabel";
-            this.uxLabelOldCodeValue.Size = new System.Drawing.Size(66, 13);
-            this.uxLabelOldCodeValue.TabIndex = 0;
-            this.uxLabelOldCodeValue.Text = "Стар код:";
-            // 
-            // uxButtonCalculateIndexErrors
-            // 
-            this.uxButtonCalculateIndexErrors.Location = new System.Drawing.Point(612, 35);
-            this.uxButtonCalculateIndexErrors.Name = "calculateIndexErrorsButton";
-            this.uxButtonCalculateIndexErrors.Size = new System.Drawing.Size(126, 23);
-            this.uxButtonCalculateIndexErrors.TabIndex = 12;
-            this.uxButtonCalculateIndexErrors.Text = "Индексна грешка";
-            this.uxButtonCalculateIndexErrors.UseVisualStyleBackColor = true;
-            this.uxButtonCalculateIndexErrors.Click += new System.EventHandler(this.CalculateVerticalAngleErrorButtonClickedEventHandler);
-            // 
-            // uxGroupBoxChangeRows
-            // 
-            this.uxGroupBoxChangeRows.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.uxGroupBoxChangeRows.Controls.Add(this.uxButtonAddNewObservation);
-            this.uxGroupBoxChangeRows.Controls.Add(this.uxButtonDeleteSelectedObservations);
-            this.uxGroupBoxChangeRows.Location = new System.Drawing.Point(161, 349);
-            this.uxGroupBoxChangeRows.Name = "rowsEditGroupBox";
-            this.uxGroupBoxChangeRows.Size = new System.Drawing.Size(492, 45);
-            this.uxGroupBoxChangeRows.TabIndex = 13;
-            this.uxGroupBoxChangeRows.TabStop = false;
-            this.uxGroupBoxChangeRows.Text = "Редактиране на измервания";
-            // 
-            // uxButtonAddNewObservation
-            // 
-            this.uxButtonAddNewObservation.Location = new System.Drawing.Point(95, 16);
-            this.uxButtonAddNewObservation.Name = "uxButtonAddNewObservation";
-            this.uxButtonAddNewObservation.Size = new System.Drawing.Size(80, 23);
-            this.uxButtonAddNewObservation.TabIndex = 1;
-            this.uxButtonAddNewObservation.Text = "Добавяне";
-            this.uxButtonAddNewObservation.UseVisualStyleBackColor = true;
-            this.uxButtonAddNewObservation.Click += new System.EventHandler(this.AddNewObservationButtonClickedEventHandler);
-            // 
-            // uxButtonDeleteSelectedObservations
-            // 
-            this.uxButtonDeleteSelectedObservations.Location = new System.Drawing.Point(9, 16);
-            this.uxButtonDeleteSelectedObservations.Name = "uxButtonDeleteSelectedObservations";
-            this.uxButtonDeleteSelectedObservations.Size = new System.Drawing.Size(80, 23);
-            this.uxButtonDeleteSelectedObservations.TabIndex = 0;
-            this.uxButtonDeleteSelectedObservations.Text = "Изтриване";
-            this.uxButtonDeleteSelectedObservations.UseVisualStyleBackColor = true;
-            this.uxButtonDeleteSelectedObservations.Click += new System.EventHandler(this.DeleteSelectedObservationsButtonClickedEventHandler);
-            // 
-            // MainForm
+            // MainPresenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -526,7 +519,7 @@ namespace DpiConverter.Presenters
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.uxMenu;
             this.MinimumSize = new System.Drawing.Size(768, 475);
-            this.Name = "MainForm";
+            this.Name = "MainPresenter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DPI Converter - Конвертиране на данни от полски измервания";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -542,5 +535,14 @@ namespace DpiConverter.Presenters
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn targetHeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horizontalAngle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn slopeDistance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zenithAngle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doubleIndexError;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointCode;
+
     }
 }

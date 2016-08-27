@@ -2,25 +2,24 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
-    using System.Windows.Forms;
+    using DpiConverter.Helpers;
 
     internal class Observation
     {
-        private string pointCode = string.Empty;
+        private string featureCode = string.Empty;
         private string targetPoint;
         private double targetHeight;
         private double horizontalAngle;
         private double slopeDistance;
         private double zenithAngle;
         private string pointDescription = string.Empty;
-        private double? verticalAngleError = null;
-        private double? horizontalAngleError = null;
+        private double? verticalAngleMisclosure = null;
+        private double? horizontalAngleMisclosure = null;
         private ObservationPurpose purpose = ObservationPurpose.Sideshot;
 
-        public Observation(string pointCode, string targetPoint, double targetHeight, double horizontalAngle, double slopeDistance, double zenithAngle, string pointDescription)
+        public Observation(string featureCode, string targetPoint, double targetHeight, double horizontalAngle, double slopeDistance, double zenithAngle, string pointDescription)
         {
-            this.pointCode = pointCode;
+            this.featureCode = featureCode;
             this.targetPoint = targetPoint;
             this.targetHeight = targetHeight;
             this.horizontalAngle = horizontalAngle;
@@ -37,16 +36,16 @@
             }
         }
 
-        public double? HorizontalAngleError
+        public double? HorizontalAngleMisclosure
         {
             get
             {
-                return this.horizontalAngleError;
+                return this.horizontalAngleMisclosure;
             }
 
             set
             {
-                this.horizontalAngleError = value;
+                this.horizontalAngleMisclosure = value;
             }
         }
 
@@ -63,16 +62,16 @@
             }
         }
 
-        public double? VerticalAngleError
+        public double? VerticalAngleMisclosure
         {
             get
             {
-                return this.verticalAngleError;
+                return this.verticalAngleMisclosure;
             }
 
             set
             {
-                this.verticalAngleError = value;
+                this.verticalAngleMisclosure = value;
             }
         }
 
@@ -93,66 +92,34 @@
         {
             get
             {
-                return string.Format("{0}{1}", this.pointCode, this.targetPoint);
+                return string.Format("{0}{1}", this.featureCode, this.targetPoint);
             }
 
             set
             {
-                try
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    if (string.IsNullOrWhiteSpace(value))
-                    {
-                        throw new Exception("Невалиден номер на точка!");
-                    }
-
-                    StringBuilder code = new StringBuilder();
-
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        if (char.IsLetter(value[i]))
-                        {
-                            code.Append(value[i]);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    string pointCode = code.ToString();
-
-                    StringBuilder number = new StringBuilder();
-
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        if (char.IsDigit(value[i]))
-                        {
-                            number.Append(value[i]);
-                        }
-                    }
-
-                    string pointNumber = number.ToString();
-
-                    this.PointCode = pointCode;
-                    this.TargetPoint = pointNumber;
+                    throw new ArgumentException("Невалиден номер на точка!");
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Грешка:", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                string featureCode = StationHelper.ParseCode(value);
+                string pointNumber = StationHelper.ParseNumber(value);
+
+                this.FeatureCode = featureCode;
+                this.TargetPoint = pointNumber;
             }
         }
 
-        public string PointCode
+        public string FeatureCode
         {
             get
             {
-                return this.pointCode;
+                return this.featureCode;
             }
 
             set
             {
-                this.pointCode = value;
+                this.featureCode = value;
             }
         }
 
@@ -165,19 +132,12 @@
 
             set
             {
-                try
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    if (string.IsNullOrWhiteSpace(value))
-                    {
-                        throw new Exception("Невалиден номер на наблюдавана точка!");
-                    }
+                    throw new ArgumentException("Невалиден номер на наблюдавана точка!");
+                }
 
-                    this.targetPoint = value;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Грешка:", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                this.targetPoint = value;
             }
         }
 

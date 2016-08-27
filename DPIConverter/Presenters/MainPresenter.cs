@@ -144,7 +144,7 @@
             }
         }
 
-        private void ChangePointCode(object sender, EventArgs e)
+        private void ChangeFeatureCode(object sender, EventArgs e)
         {
             try
             {
@@ -164,13 +164,13 @@
                 this.uxTextBoxOldCodeValue.BackColor = Color.Empty;
                 this.uxTextBoxNewCodeValue.BackColor = Color.Empty;
 
-                int affectedCodesCount = Databases.DefaultDatabase.GetInstance().ChangePointCode(this.uxTextBoxOldCodeValue.Text, this.uxTextBoxNewCodeValue.Text);
+                int changedFeatureCodes = Databases.DefaultDatabase.GetInstance().ChangeFeatureCode(this.uxTextBoxOldCodeValue.Text, this.uxTextBoxNewCodeValue.Text);
 
                 this.stationsBindingSource.ResetBindings(false);
 
                 this.uxDataGridViewObservations.Invalidate();
 
-                MessageBox.Show(string.Format("Редактирани кодове: {0}", affectedCodesCount), "Информация:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("Редактирани кодове: {0}", changedFeatureCodes), "Информация:", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ArgumentException ex)
             {
@@ -200,14 +200,14 @@
             Application.Exit();
         }
 
-        private void CalculateVerticalAngleErrorButtonClickedEventHandler(object sender, EventArgs e)
+        private void CalculateVerticalAngleMisclosureButtonClickedEventHandler(object sender, EventArgs e)
         {
             try
             {
                 if (Databases.DefaultDatabase.GetInstance().Stations.Count > 0)
                 {
-                    Databases.DefaultDatabase.GetInstance().Stations.ElementAt(this.uxListBoxStations.SelectedIndex).ResetVerticalAngleError();
-                    Databases.DefaultDatabase.GetInstance().Stations.ElementAt(this.uxListBoxStations.SelectedIndex).CalculateVerticalAngleError();
+                    Databases.DefaultDatabase.GetInstance().Stations.ElementAt(this.uxListBoxStations.SelectedIndex).ResetVerticalAngleMisclosure();
+                    Databases.DefaultDatabase.GetInstance().Stations.ElementAt(this.uxListBoxStations.SelectedIndex).CalculateVerticalAngleMisclosure();
 
                     this.stationsBindingSource.ResetBindings(false);
 

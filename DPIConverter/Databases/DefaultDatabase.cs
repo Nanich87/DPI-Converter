@@ -1,11 +1,12 @@
 ﻿namespace DpiConverter.Databases
 {
+    using System.Linq;
     using System.Collections.Generic;
     using Data;
 
     internal class DefaultDatabase
     {
-        private static readonly DefaultDatabase Instance = new DefaultDatabase();
+        private static readonly DefaultDatabase instance = new DefaultDatabase();
         private readonly ICollection<Station> stations = new List<Station>();
 
         private DefaultDatabase()
@@ -22,34 +23,34 @@
 
         public static DefaultDatabase GetInstance()
         {
-            return DefaultDatabase.Instance;
+            return DefaultDatabase.instance;
         }
 
-        public int ChangePointCode(string oldCode, string newCode)
+        public int ChangeFeatureCode(string oldCode, string newCode)
         {
-            int affectedCodesCount = 0;
+            int changedFeatureCodes = 0;
 
             foreach (var station in this.stations)
             {
-                if (station.PointCode.ToLower() == oldCode.ToLower())
+                if (station.FeatureCode.ToLower() == oldCode.ToLower())
                 {
-                    station.PointCode = newCode;
+                    station.FeatureCode = newCode;
 
-                    affectedCodesCount++;
+                    changedFeatureCodes++;
                 }
 
                 foreach (var observation in station.Observations)
                 {
-                    if (observation.PointCode.ToLower() == oldCode.ToLower())
+                    if (observation.FeatureCode.ToLower() == oldCode.ToLower())
                     {
-                        observation.PointCode = newCode;
+                        observation.FeatureCode = newCode;
 
-                        affectedCodesCount++;
+                        changedFeatureCodes++;
                     }
                 }
             }
 
-            return affectedCodesCount;
+            return changedFeatureCodes;
         }
     }
 }

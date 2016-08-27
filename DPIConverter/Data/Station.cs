@@ -1,9 +1,10 @@
 ﻿namespace DpiConverter.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
-    using System.Text;
+    using DpiConverter.Helpers;
 
     internal class Station
     {
@@ -12,27 +13,27 @@
         private double instrumentHeight;
         private BindingList<Observation> observations;
         private bool useStation = true;
-        private string pointCode = string.Empty;
+        private string featureCode = string.Empty;
 
-        public Station(string stationIndex, string pointCode, string stationName, double instrumentHeight, BindingList<Observation> observations)
+        public Station(string stationIndex, string featureCode, string stationName, double instrumentHeight, BindingList<Observation> observations)
         {
             this.stationIndex = stationIndex;
-            this.pointCode = pointCode;
+            this.featureCode = featureCode;
             this.stationName = stationName;
             this.instrumentHeight = instrumentHeight;
             this.observations = observations;
         }
 
-        public string PointCode
+        public string FeatureCode
         {
             get
             {
-                return this.pointCode;
+                return this.featureCode;
             }
 
             set
             {
-                this.pointCode = value;
+                this.featureCode = value;
             }
         }
 
@@ -41,40 +42,20 @@
             get
             {
                 string prefix = this.UseStation ? string.Empty : "-";
-                return string.Format("{0}{1}{2}", prefix, this.PointCode, this.StationName);
+                return string.Format("{0}{1}{2}", prefix, this.FeatureCode, this.StationName);
             }
 
             set
             {
-                StringBuilder code = new StringBuilder();
-
-                for (int i = 0; i < value.Length; i++)
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    if (char.IsLetter(value[i]))
-                    {
-                        code.Append(value[i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    throw new ArgumentException("Невалидно име на станция!");
                 }
 
-                string pointCode = code.ToString();
+                string featureCode = StationHelper.ParseCode(value);
+                string pointNumber = StationHelper.ParseNumber(value);
 
-                StringBuilder number = new StringBuilder();
-
-                for (int i = 0; i < value.Length; i++)
-                {
-                    if (char.IsDigit(value[i]))
-                    {
-                        number.Append(value[i]);
-                    }
-                }
-
-                string pointNumber = number.ToString();
-
-                this.pointCode = pointCode;
+                this.featureCode = featureCode;
                 this.stationName = pointNumber;
             }
         }
@@ -127,6 +108,11 @@
 
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Невалидно име на станция!");
+                }
+
                 this.stationName = value;
             }
         }
@@ -140,43 +126,58 @@
 
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Невалидна стойност за височина на инструмента!");
+                }
+
+                if (99 < value || value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Височината на инструмента не може да бъде по-малка от 0.000 или по-голяма от 99 метра!");
+                }
+
                 this.instrumentHeight = value;
             }
         }
 
-        public void ResetVerticalAngleError()
+        public void ResetVerticalAngleMisclosure()
         {
-            this.observations.ToList().ForEach(o => o.VerticalAngleError = null);
+            this.observations
+                .ToList()
+                .ForEach(o => o.VerticalAngleMisclosure = null);
         }
 
-        public void CalculateVerticalAngleError()
+        public void CalculateVerticalAngleMisclosure()
         {
-            Dictionary<string, List<double>> zenithAngles = new Dictionary<string, List<double>>();
+            Dictionary<string, List<double>> pointObservations = new Dictionary<string, List<double>>();
 
-            foreach (var observation in this.observations.Where(o => o.PointCode != string.Empty))
+            foreach (var observation in this.observations.Where(o => o.FeatureCode != string.Empty))
             {
-                if (zenithAngles.ContainsKey(observation.FullName.ToLower()))
+                if (pointObservations.ContainsKey(observation.FullName.ToLower()))
                 {
-                    zenithAngles[observation.FullName.ToLower()].Add(observation.ZenithAngle);
+                    pointObservations[observation.FullName.ToLower()].Add(observation.ZenithAngle);
                 }
                 else
                 {
-                    zenithAngles.Add(observation.FullName.ToLower(), new List<double>() { observation.ZenithAngle });
+                    pointObservations.Add(observation.FullName.ToLower(), new List<double>() { observation.ZenithAngle });
                 }
             }
 
-            foreach (var zenithAngleList in zenithAngles)
+            foreach (var zenithAngleCollection in pointObservations)
             {
-                var firstFaceZenithAnglesList = zenithAngleList.Value.Where(angle => angle <= 200).ToList();
-                var secondFaceZenithAnglesList = zenithAngleList.Value.Where(angle => angle > 200).ToList();
+                var firstFaceZenithAngles = zenithAngleCollection.Value.Where(angle => angle <= 200).ToList();
+                var secondFaceZenithAngles = zenithAngleCollection.Value.Where(angle => angle > 200).ToList();
 
-                double averageFirstFaceZenithAngle = firstFaceZenithAnglesList.Sum() / firstFaceZenithAnglesList.Count;
-                double averageSecondFaceZenithAngle = secondFaceZenithAnglesList.Sum() / secondFaceZenithAnglesList.Count;
-                double indexError = (400 - (averageFirstFaceZenithAngle + averageSecondFaceZenithAngle)) * 10000;
+                double averageFirstFaceZenithAngle = firstFaceZenithAngles.Sum() / firstFaceZenithAngles.Count;
+                double averageSecondFaceZenithAngle = secondFaceZenithAngles.Sum() / secondFaceZenithAngles.Count;
+                double zenithAngleMisclosure = (400 - (averageFirstFaceZenithAngle + averageSecondFaceZenithAngle)) * 10000;
 
-                if (firstFaceZenithAnglesList.Count > 0 && secondFaceZenithAnglesList.Count > 0)
+                if (firstFaceZenithAngles.Count > 0 && secondFaceZenithAngles.Count > 0)
                 {
-                    this.observations.Where(o => o.FullName.ToLower() == zenithAngleList.Key).First().VerticalAngleError = indexError;
+                    this.observations
+                        .Where(o => o.FullName.ToLower() == zenithAngleCollection.Key)
+                        .First()
+                        .VerticalAngleMisclosure = zenithAngleMisclosure;
                 }
             }
         }

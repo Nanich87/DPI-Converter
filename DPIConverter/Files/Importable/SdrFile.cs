@@ -40,7 +40,7 @@
                         case "02TP":
                             if (stationsList.Count > 0)
                             {
-                                stationsList.Last().CalculateVerticalAngleError();
+                                stationsList.Last().CalculateVerticalAngleMisclosure();
                             }
 
                             string stationName = this.validation ? lineData[1] : currentLine.Substring(4, 16).Trim();

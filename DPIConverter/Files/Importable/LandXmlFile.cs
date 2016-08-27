@@ -51,7 +51,7 @@
                 BindingList<Observation> observations = LandXmlHelper.ParseObservations(station);
 
                 stationsList.Add(new Station(stationIndex, stationPointCode, stationName, instrumentHeight, observations));
-                stationsList.Last().CalculateVerticalAngleError();
+                stationsList.Last().CalculateVerticalAngleMisclosure();
             }
         }
     }

@@ -79,7 +79,7 @@
 
                 if (currentObservation.Purpose == ObservationPurpose.Sideshot &&
                     Properties.Settings.Default.AddOffsetToSideshotPoints &&
-                    currentObservation.PointCode == string.Empty)
+                    currentObservation.FeatureCode == string.Empty)
                 {
                     int pointNumber;
                     
