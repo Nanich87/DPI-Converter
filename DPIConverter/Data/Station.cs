@@ -126,12 +126,7 @@
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Невалидна стойност за височина на инструмента!");
-                }
-
-                if (99 < value || value < 0)
+                if (value > 99 || value < 0)
                 {
                     throw new ArgumentOutOfRangeException("Височината на инструмента не може да бъде по-малка от 0.000 или по-голяма от 99 метра!");
                 }

@@ -1,6 +1,4 @@
-﻿using DpiConverter.Presenters;
-
-namespace DpiConverter.Presenters
+﻿namespace DpiConverter.Presenters
 {
     public partial class MainPresenter
     {
@@ -40,6 +38,13 @@ namespace DpiConverter.Presenters
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem uxMenuItemOpenNewSerialPortTerminal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn targetHeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horizontalAngle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn slopeDistance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zenithAngle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doubleIndexError;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointCode;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -86,6 +91,13 @@ namespace DpiConverter.Presenters
             this.uxMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.uxListBoxStations = new System.Windows.Forms.ListBox();
             this.uxDataGridViewObservations = new System.Windows.Forms.DataGridView();
+            this.pointNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targetHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horizontalAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.slopeDistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zenithAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doubleIndexError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxLabelStations = new System.Windows.Forms.Label();
             this.uxLabelSelectedStation = new System.Windows.Forms.Label();
             this.uxTextBoxSelectedStation = new System.Windows.Forms.TextBox();
@@ -103,13 +115,6 @@ namespace DpiConverter.Presenters
             this.uxGroupBoxChangeRows = new System.Windows.Forms.GroupBox();
             this.uxButtonAddNewObservation = new System.Windows.Forms.Button();
             this.uxButtonDeleteSelectedObservations = new System.Windows.Forms.Button();
-            this.pointNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targetHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horizontalAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.slopeDistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zenithAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doubleIndexError = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxDataGridViewObservations)).BeginInit();
             this.uxGroupBoxChangeCode.SuspendLayout();
@@ -259,6 +264,79 @@ namespace DpiConverter.Presenters
             this.uxDataGridViewObservations.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EndObservationCellEditEventHandler);
             this.uxDataGridViewObservations.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.ObservationsDataGridViewDataError);
             // 
+            // pointNumber
+            // 
+            this.pointNumber.DataPropertyName = "FullName";
+            this.pointNumber.HeaderText = "Набл. точка";
+            this.pointNumber.MaxInputLength = 10;
+            this.pointNumber.Name = "pointNumber";
+            // 
+            // targetHeight
+            // 
+            this.targetHeight.DataPropertyName = "TargetHeight";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N3";
+            dataGridViewCellStyle2.NullValue = null;
+            this.targetHeight.DefaultCellStyle = dataGridViewCellStyle2;
+            this.targetHeight.HeaderText = "Височина";
+            this.targetHeight.MaxInputLength = 9;
+            this.targetHeight.Name = "targetHeight";
+            // 
+            // horizontalAngle
+            // 
+            this.horizontalAngle.DataPropertyName = "HorizontalAngle";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N4";
+            dataGridViewCellStyle3.NullValue = null;
+            this.horizontalAngle.DefaultCellStyle = dataGridViewCellStyle3;
+            this.horizontalAngle.HeaderText = "Хоризонтален ъгъл";
+            this.horizontalAngle.MaxInputLength = 9;
+            this.horizontalAngle.Name = "horizontalAngle";
+            // 
+            // slopeDistance
+            // 
+            this.slopeDistance.DataPropertyName = "SlopeDistance";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N3";
+            dataGridViewCellStyle4.NullValue = null;
+            this.slopeDistance.DefaultCellStyle = dataGridViewCellStyle4;
+            this.slopeDistance.HeaderText = "Наклонено разстояние";
+            this.slopeDistance.MaxInputLength = 9;
+            this.slopeDistance.Name = "slopeDistance";
+            // 
+            // zenithAngle
+            // 
+            this.zenithAngle.DataPropertyName = "ZenithAngle";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N4";
+            dataGridViewCellStyle5.NullValue = null;
+            this.zenithAngle.DefaultCellStyle = dataGridViewCellStyle5;
+            this.zenithAngle.HeaderText = "Зенитен ъгъл";
+            this.zenithAngle.MaxInputLength = 9;
+            this.zenithAngle.Name = "zenithAngle";
+            // 
+            // doubleIndexError
+            // 
+            this.doubleIndexError.DataPropertyName = "VerticalAngleMisclosure";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.doubleIndexError.DefaultCellStyle = dataGridViewCellStyle6;
+            this.doubleIndexError.HeaderText = "Двойна индексна грешка";
+            this.doubleIndexError.MaxInputLength = 10;
+            this.doubleIndexError.Name = "doubleIndexError";
+            this.doubleIndexError.ReadOnly = true;
+            // 
+            // pointCode
+            // 
+            this.pointCode.DataPropertyName = "PointDescription";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.pointCode.DefaultCellStyle = dataGridViewCellStyle7;
+            this.pointCode.HeaderText = "Код";
+            this.pointCode.MaxInputLength = 20;
+            this.pointCode.Name = "pointCode";
+            // 
             // uxLabelStations
             // 
             this.uxLabelStations.AutoSize = true;
@@ -321,7 +399,7 @@ namespace DpiConverter.Presenters
             this.uxLabelProgramVersion.Name = "uxLabelProgramVersion";
             this.uxLabelProgramVersion.Size = new System.Drawing.Size(81, 13);
             this.uxLabelProgramVersion.TabIndex = 10;
-            this.uxLabelProgramVersion.Text = "версия 0.7.3";
+            this.uxLabelProgramVersion.Text = "версия 0.7.4";
             // 
             // uxGroupBoxChangeCode
             // 
@@ -424,79 +502,6 @@ namespace DpiConverter.Presenters
             this.uxButtonDeleteSelectedObservations.UseVisualStyleBackColor = true;
             this.uxButtonDeleteSelectedObservations.Click += new System.EventHandler(this.DeleteSelectedObservationsButtonClickedEventHandler);
             // 
-            // pointNumber
-            // 
-            this.pointNumber.DataPropertyName = "FullName";
-            this.pointNumber.HeaderText = "Набл. точка";
-            this.pointNumber.MaxInputLength = 10;
-            this.pointNumber.Name = "pointNumber";
-            // 
-            // targetHeight
-            // 
-            this.targetHeight.DataPropertyName = "TargetHeight";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N3";
-            dataGridViewCellStyle2.NullValue = null;
-            this.targetHeight.DefaultCellStyle = dataGridViewCellStyle2;
-            this.targetHeight.HeaderText = "Височина";
-            this.targetHeight.MaxInputLength = 9;
-            this.targetHeight.Name = "targetHeight";
-            // 
-            // horizontalAngle
-            // 
-            this.horizontalAngle.DataPropertyName = "HorizontalAngle";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N4";
-            dataGridViewCellStyle3.NullValue = null;
-            this.horizontalAngle.DefaultCellStyle = dataGridViewCellStyle3;
-            this.horizontalAngle.HeaderText = "Хоризонтален ъгъл";
-            this.horizontalAngle.MaxInputLength = 9;
-            this.horizontalAngle.Name = "horizontalAngle";
-            // 
-            // slopeDistance
-            // 
-            this.slopeDistance.DataPropertyName = "SlopeDistance";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N3";
-            dataGridViewCellStyle4.NullValue = null;
-            this.slopeDistance.DefaultCellStyle = dataGridViewCellStyle4;
-            this.slopeDistance.HeaderText = "Наклонено разстояние";
-            this.slopeDistance.MaxInputLength = 9;
-            this.slopeDistance.Name = "slopeDistance";
-            // 
-            // zenithAngle
-            // 
-            this.zenithAngle.DataPropertyName = "ZenithAngle";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N4";
-            dataGridViewCellStyle5.NullValue = null;
-            this.zenithAngle.DefaultCellStyle = dataGridViewCellStyle5;
-            this.zenithAngle.HeaderText = "Зенитен ъгъл";
-            this.zenithAngle.MaxInputLength = 9;
-            this.zenithAngle.Name = "zenithAngle";
-            // 
-            // doubleIndexError
-            // 
-            this.doubleIndexError.DataPropertyName = "VerticalAngleMisclosure";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.doubleIndexError.DefaultCellStyle = dataGridViewCellStyle6;
-            this.doubleIndexError.HeaderText = "Двойна индексна грешка";
-            this.doubleIndexError.MaxInputLength = 10;
-            this.doubleIndexError.Name = "doubleIndexError";
-            this.doubleIndexError.ReadOnly = true;
-            // 
-            // pointCode
-            // 
-            this.pointCode.DataPropertyName = "PointDescription";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.pointCode.DefaultCellStyle = dataGridViewCellStyle7;
-            this.pointCode.HeaderText = "Код";
-            this.pointCode.MaxInputLength = 20;
-            this.pointCode.Name = "pointCode";
-            // 
             // MainPresenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -535,14 +540,5 @@ namespace DpiConverter.Presenters
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn targetHeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn horizontalAngle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn slopeDistance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zenithAngle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doubleIndexError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointCode;
-
     }
 }

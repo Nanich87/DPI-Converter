@@ -130,11 +130,11 @@
                 output.AppendLine();
                 output.AppendLine("Програма за конвертиране на LandXML v1.2, Trimble JobXML и Sokkia SDR33 файлове в Dpi формат");
                 output.AppendLine();
-                output.AppendLine("Версия: 0.7.3");
+                output.AppendLine("Версия: 0.7.4");
                 output.AppendLine();
                 output.AppendLine("Автор: инж. Н. Гешков");
                 output.AppendLine();
-                output.AppendLine("www.SixEightOne.eu, facebook.com/DPIConverter");
+                output.AppendLine("www.SixEightOne.eu");
 
                 MessageBox.Show(output.ToString(), "За програмата:", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
