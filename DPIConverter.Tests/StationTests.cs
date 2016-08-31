@@ -2,8 +2,8 @@
 {
     using System;
     using System.ComponentModel;
-    using DpiConverter.Data;
-    using DpiConverter.Helpers;
+    using Data;
+    using Helpers;
     using NUnit.Framework;
 
     public class StationTests
@@ -17,9 +17,9 @@
         }
 
         [TestCase("", "")]
-        public void FullName_ShouldThrowArgumentException_WhenInvalidStationNameSet(string featureCode, string stationName)
+        public void FullName_ShouldThrowArgumentException_WhenInvalidStationNameSet(string featureCode, string stationNumber)
         {
-            Assert.Throws<ArgumentException>(() => station.FullName = string.Format("{0}{1}", featureCode, stationName));
+            Assert.Throws<ArgumentException>(() => station.FullName = string.Format("{0}{1}", featureCode, stationNumber));
         }
 
         [TestCase("")]

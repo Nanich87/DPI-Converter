@@ -1,6 +1,5 @@
 ﻿namespace DpiConverter.Databases
 {
-    using System.Linq;
     using System.Collections.Generic;
     using Data;
 

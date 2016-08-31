@@ -40,7 +40,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsPresenter));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.usePredefinedCodesCheckBox = new System.Windows.Forms.CheckBox();
             this.addPointOffsetCheckBox = new System.Windows.Forms.CheckBox();
             this.pointOffsetTextBox = new System.Windows.Forms.TextBox();
             this.inputFileValidationCheckBox = new System.Windows.Forms.CheckBox();
@@ -50,7 +52,6 @@
             this.exportSideshotObservationsCheckBox = new System.Windows.Forms.CheckBox();
             this.closeFormButton = new System.Windows.Forms.Button();
             this.saveSettingsButton = new System.Windows.Forms.Button();
-            this.usePredefinedCodesCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +68,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Четене на данни";
+            // 
+            // usePredefinedCodesCheckBox
+            // 
+            this.usePredefinedCodesCheckBox.AutoSize = true;
+            this.usePredefinedCodesCheckBox.Location = new System.Drawing.Point(7, 94);
+            this.usePredefinedCodesCheckBox.Name = "usePredefinedCodesCheckBox";
+            this.usePredefinedCodesCheckBox.Size = new System.Drawing.Size(258, 17);
+            this.usePredefinedCodesCheckBox.TabIndex = 4;
+            this.usePredefinedCodesCheckBox.Text = "Използване на предефинирани кодове";
+            this.usePredefinedCodesCheckBox.UseVisualStyleBackColor = true;
             // 
             // addPointOffsetCheckBox
             // 
@@ -124,7 +135,7 @@
             this.exportTraverseObservationsCheckBox.AutoSize = true;
             this.exportTraverseObservationsCheckBox.Location = new System.Drawing.Point(7, 42);
             this.exportTraverseObservationsCheckBox.Name = "exportTraverseObservationsCheckBox";
-            this.exportTraverseObservationsCheckBox.Size = new System.Drawing.Size(139, 17);
+            this.exportTraverseObservationsCheckBox.Size = new System.Drawing.Size(138, 17);
             this.exportTraverseObservationsCheckBox.TabIndex = 2;
             this.exportTraverseObservationsCheckBox.Text = "Полигон (Traverse)";
             this.exportTraverseObservationsCheckBox.UseVisualStyleBackColor = true;
@@ -160,31 +171,22 @@
             this.saveSettingsButton.UseVisualStyleBackColor = true;
             this.saveSettingsButton.Click += new System.EventHandler(this.SaveSettings);
             // 
-            // usePredefinedCodesCheckBox
-            // 
-            this.usePredefinedCodesCheckBox.AutoSize = true;
-            this.usePredefinedCodesCheckBox.Location = new System.Drawing.Point(7, 94);
-            this.usePredefinedCodesCheckBox.Name = "usePredefinedCodesCheckBox";
-            this.usePredefinedCodesCheckBox.Size = new System.Drawing.Size(258, 17);
-            this.usePredefinedCodesCheckBox.TabIndex = 4;
-            this.usePredefinedCodesCheckBox.Text = "Използване на предефинирани кодове";
-            this.usePredefinedCodesCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // SettingsForm
+            // SettingsPresenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 362);
+            this.ClientSize = new System.Drawing.Size(334, 361);
             this.Controls.Add(this.saveSettingsButton);
             this.Controls.Add(this.closeFormButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(350, 400);
             this.MinimumSize = new System.Drawing.Size(350, 400);
-            this.Name = "SettingsForm";
+            this.Name = "SettingsPresenter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки";
             this.groupBox1.ResumeLayout(false);

@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Icons\export-icon.ico" />
+    <Content Include="Resources\Icons\settings-file-icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SerialPortTerminal\SerialPortTerminal.csproj">

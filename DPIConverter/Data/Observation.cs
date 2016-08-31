@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using DpiConverter.Helpers;
+    using Helpers;
 
     internal class Observation
     {
@@ -163,6 +163,16 @@
 
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Хоризонталният ъгъл не може да бъде по-малък от 0 гради!");
+                }
+
+                if (value >= 400)
+                {
+                    throw new ArgumentOutOfRangeException("Хоризонталният ъгъл не може да бъде по-голям или равен на 400 гради!");
+                }
+
                 this.horizontalAngle = value;
             }
         }
@@ -189,6 +199,16 @@
 
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Зенитният ъгъл не може да бъде по-малък от 0 гради!");
+                }
+
+                if (value >= 400)
+                {
+                    throw new ArgumentOutOfRangeException("Зенитният ъгъл не може да бъде по-голям или равен на 400 гради!");
+                }
+
                 this.zenithAngle = value;
             }
         }
