@@ -86,18 +86,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\DataConversionHelper.cs" />
-    <Compile Include="DataMode.cs" />
+    <Compile Include="Data\DataMode.cs" />
     <Compile Include="LogMessage\LogMessageType.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Presenters\MainPresenter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Presenters\MainPresenter.Designer.cs">
+      <DependentUpon>MainPresenter.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presenters\MainPresenter.resx">
+      <DependentUpon>MainPresenter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,7 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
-    <Content Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

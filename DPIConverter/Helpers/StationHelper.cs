@@ -1,7 +1,5 @@
 ﻿namespace DpiConverter.Helpers
 {
-    using System;
-    using System.Linq;
     using System.Text;
 
     internal static class StationHelper

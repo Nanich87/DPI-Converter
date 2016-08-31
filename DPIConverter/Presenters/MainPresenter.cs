@@ -305,7 +305,7 @@
         {
             try
             {
-                var serialPortTerminalPresenter = new SerialPortTerminal.MainForm();
+                var serialPortTerminalPresenter = new SerialPortTerminal.MainPresenter();
                 serialPortTerminalPresenter.ShowDialog();
 
                 if (!string.IsNullOrWhiteSpace(serialPortTerminalPresenter.FileName) && File.Exists(serialPortTerminalPresenter.FileName))

@@ -1,7 +1,6 @@
 ﻿namespace SerialPortTerminal.Helpers
 {
     using System;
-    using System.Linq;
     using System.Text;
 
     internal class DataConversionHelper

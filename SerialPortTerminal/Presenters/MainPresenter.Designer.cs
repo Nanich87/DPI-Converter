@@ -1,6 +1,6 @@
 namespace SerialPortTerminal
 {
-    public partial class MainForm
+    public partial class MainPresenter
     {
         /// <summary>
         /// Required designer variable.
@@ -67,7 +67,7 @@ namespace SerialPortTerminal
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPresenter));
             this.outputTerminal = new System.Windows.Forms.RichTextBox();
             this.textBoxSendData = new System.Windows.Forms.TextBox();
             this.lblSend = new System.Windows.Forms.Label();

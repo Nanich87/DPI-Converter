@@ -10,10 +10,10 @@ namespace SerialPortTerminal
     using System.Text;
     using System.Threading;
     using System.Windows.Forms;
-    using SerialPortTerminal.LogMessage;
-    using SerialPortTerminal.Properties;
+    using LogMessage;
+    using Properties;
 
-    public partial class MainForm : Form
+    public partial class MainPresenter : Form
     {
         private SerialPort serialPort;
         private Color[] logMessageTypeColor = 
@@ -29,7 +29,7 @@ namespace SerialPortTerminal
         private Settings settings = Settings.Default;
         private string fileName;
 
-        public MainForm()
+        public MainPresenter()
         {
             this.InitializeComponent();
 
@@ -441,7 +441,6 @@ namespace SerialPortTerminal
             output.AppendLine();
             output.AppendLine("Програмата служи за комуникация с устройства, свързани чрез сериен порт");
             output.AppendLine();
-            output.AppendLine("Автор: SixEightOne.eu");
 
             MessageBox.Show(output.ToString(), "За програмата:", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

@@ -9,7 +9,7 @@ namespace SerialPortTerminal
         private static void Main()
         {
             Application.EnableVisualStyles();
-            Application.Run(new MainForm());
+            Application.Run(new MainPresenter());
         }
     }
 }

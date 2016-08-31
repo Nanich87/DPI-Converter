@@ -2,9 +2,8 @@
 {
     using System;
     using System.ComponentModel;
-    using System.Linq;
     using System.Windows.Forms;
-    using DpiConverter.Properties;
+    using Properties;
 
     public partial class SettingsPresenter : Form
     {
