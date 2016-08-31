@@ -199,12 +199,12 @@
 
             set
             {
-                if (value < 0)
+                if (value < 0.0000)
                 {
                     throw new ArgumentOutOfRangeException("Зенитният ъгъл не може да бъде по-малък от 0 гради!");
                 }
 
-                if (value >= 400)
+                if (value >= 400.0000)
                 {
                     throw new ArgumentOutOfRangeException("Зенитният ъгъл не може да бъде по-голям или равен на 400 гради!");
                 }
