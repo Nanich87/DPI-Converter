@@ -87,7 +87,15 @@
             string extension = Path.GetExtension(path);
 
             IImportableFile document = Factories.InputFileFactory.Create(extension, Properties.Settings.Default.ValidateInputFile);
-            document.Open(path, Databases.DefaultDatabase.GetInstance().Stations);
+            try
+            {
+                document.Open(path, Databases.DefaultDatabase.GetInstance().Stations);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+                throw;
+            }
 
             MessageBox.Show(string.Format("Добавени станции: {0}; Добавени измервания: {1}", Databases.DefaultDatabase.GetInstance().Stations.Count, Databases.DefaultDatabase.GetInstance().Stations.SelectMany(x => x.Observations).Count()), "Четене на файл:", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

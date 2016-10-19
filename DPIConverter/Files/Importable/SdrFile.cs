@@ -12,7 +12,8 @@
     {
         private readonly bool validation = false;
 
-        public SdrFile() : this(false)
+        public SdrFile()
+            : this(false)
         {
         }
 
@@ -38,6 +39,7 @@
                     switch (code)
                     {
                         case "02TP":
+                        case "02IC":
                             if (stationsList.Count > 0)
                             {
                                 stationsList.Last().CalculateVerticalAngleMisclosure();
@@ -60,13 +62,21 @@
                             stationIndex++;
                             break;
                         case "03NM":
+                        case "03IC":
                             targetHeight = this.validation ? double.Parse(lineData[1]) : double.Parse(currentLine.Substring(4, 16).Trim());
                             break;
                         case "09F1":
                         case "09F2":
                             string targetPoint = this.validation ? lineData[2] : currentLine.Substring(20, 16).Trim();
                             double horizontalAngle = this.validation ? double.Parse(lineData[5]) : double.Parse(currentLine.Substring(68, 16).Trim());
-                            double slopeDistance = this.validation ? double.Parse(lineData[3]) : double.Parse(currentLine.Substring(36, 16).Trim());
+
+                            double slopeDistance;
+                            bool slopeDistanceResult = this.validation ? double.TryParse(lineData[3], out slopeDistance) : double.TryParse(currentLine.Substring(36, 16).Trim(), out slopeDistance);
+                            if (!slopeDistanceResult)
+                            {
+                                slopeDistance = -1.000;
+                            }
+                            
                             double zenithAngle = this.validation ? double.Parse(lineData[4]) : double.Parse(currentLine.Substring(52, 16).Trim());
                             string pointDescription = this.validation ? lineData[6] : currentLine.Substring(84, 16).Trim();
                             string pointCode = Observation.PredefinedCodes.Contains(pointDescription.ToLower()) ? pointDescription : string.Empty;
