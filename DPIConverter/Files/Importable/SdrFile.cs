@@ -1,5 +1,6 @@
 ﻿namespace DpiConverter.Files.Importable
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.IO;
@@ -7,6 +8,7 @@
     using System.Text.RegularExpressions;
     using Contracts.Files;
     using Data;
+    using DpiConverter.Helpers;
 
     internal class SdrFile : IImportableFile
     {
@@ -26,76 +28,86 @@
         {
             using (StreamReader reader = new StreamReader(file))
             {
+                int rowNumber = 1;
+
                 int stationIndex = 1;
                 double targetHeight = -1.000;
 
                 while (reader.EndOfStream == false)
                 {
-                    string currentLine = reader.ReadLine();
-                    string[] lineData = Regex.Replace(currentLine, @"\s\s+", " ").Trim().Split(' ');
-
-                    string code = !this.validateFile ? lineData[0] : currentLine.Substring(0, 4);
-
-                    switch (code)
+                    try
                     {
-                        case "02TP":
-                        case "02IC":
-                            if (stationsList.Count > 0)
-                            {
-                                stationsList.Last().CalculateVerticalAngleMisclosure();
-                            }
+                        string line = reader.ReadLine();
+                        string[] data = Regex.Replace(line, @"\s\s+", " ").Trim().Split(' ');
+                        if (data.Length == 0)
+                        {
+                            continue;
+                        }
 
-                            string stationName = !this.validateFile ? lineData[1] : currentLine.Substring(4, 16).Trim();
-                            string stationCode = !this.validateFile ? lineData[6] : currentLine.Substring(84, 16).Trim();
-                            double stationHeight = !this.validateFile ? double.Parse(lineData[5]) : double.Parse(currentLine.Substring(68, 16).Trim());
+                        string code = line.Substring(0, 4);
 
-                            BindingList<Observation> observations = new BindingList<Observation>();
+                        switch (code)
+                        {
+                            case "02TP":
+                            case "02IC":
+                                string stationPoint = line.Substring(4, 16).Trim();
+                                string stationCode = line.Substring(84, 16).Trim();
+                                double stationHeight = double.Parse(line.Substring(68, 16).Trim());
 
-                            Station station = new Station(
-                                stationIndex.ToString(),
-                                stationCode,
-                                stationName,
-                                stationHeight,
-                                observations);
+                                BindingList<Observation> observations = new BindingList<Observation>();
 
-                            stationsList.Add(station);
+                                Station station = new Station(
+                                    stationIndex.ToString(),
+                                    stationCode,
+                                    stationPoint,
+                                    stationHeight,
+                                    observations);
 
-                            stationIndex++;
+                                stationsList.Add(station);
 
-                            break;
-                        case "03NM":
-                        case "03IC":
-                            targetHeight = !this.validateFile ? double.Parse(lineData[1]) : double.Parse(currentLine.Substring(4, 16).Trim());
+                                stationIndex++;
 
-                            break;
-                        case "09F1":
-                        case "09F2":
-                            string targetPoint = !this.validateFile ? lineData[2] : currentLine.Substring(20, 16).Trim();
-                            double horizontalAngle = !this.validateFile ? double.Parse(lineData[5]) : double.Parse(currentLine.Substring(68, 16).Trim());
+                                break;
+                            case "03NM":
+                            case "03IC":
+                                targetHeight = double.Parse(line.Substring(4, 16).Trim());
 
-                            double slopeDistance;
-                            bool slopeDistanceResult = !this.validateFile ? double.TryParse(lineData[3], out slopeDistance) : double.TryParse(currentLine.Substring(36, 16).Trim(), out slopeDistance);
-                            if (!slopeDistanceResult)
-                            {
-                                slopeDistance = -1.000;
-                            }
-                            
-                            double zenithAngle = !this.validateFile ? double.Parse(lineData[4]) : double.Parse(currentLine.Substring(52, 16).Trim());
-                            string pointDescription = !this.validateFile ? lineData[6] : currentLine.Substring(84, 16).Trim();
-                            string pointCode = Observation.PredefinedCodes.Contains(pointDescription.ToLower()) ? pointDescription : string.Empty;
+                                break;
+                            case "09F1":
+                            case "09F2":
+                                string targetPoint = line.Substring(20, 16).Trim();
+                                double horizontalAngle = double.Parse(line.Substring(68, 16).Trim());
 
-                            Observation observation = new Observation(
-                                pointCode,
-                                targetPoint,
-                                targetHeight,
-                                horizontalAngle,
-                                slopeDistance,
-                                zenithAngle,
-                                pointDescription);
+                                double slopeDistance;
+                                bool slopeDistanceResult = double.TryParse(line.Substring(36, 16).Trim(), out slopeDistance);
+                                if (!slopeDistanceResult)
+                                {
+                                    slopeDistance = -1.000;
+                                }
 
-                            stationsList.Last().Observations.Add(observation);
+                                double zenithAngle = double.Parse(line.Substring(52, 16).Trim());
+                                string pointDescription =line.Substring(84, 16).Trim();
+                                string pointCode = Observation.PredefinedCodes.Contains(pointDescription.ToLower()) ? pointDescription : string.Empty;
 
-                            break;
+                                Observation observation = new Observation(
+                                    pointCode,
+                                    targetPoint,
+                                    targetHeight,
+                                    horizontalAngle,
+                                    slopeDistance,
+                                    zenithAngle,
+                                    pointDescription);
+
+                                stationsList.Last().Observations.Add(observation);
+
+                                break;
+                        }
+
+                        rowNumber++;
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        LogHelper.Log(string.Format("Невалиден формат на данните на ред: {0}", rowNumber));
                     }
                 }
             }

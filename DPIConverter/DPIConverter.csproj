@@ -74,6 +74,7 @@
     <Compile Include="Contracts\Files\IExportableFile.cs" />
     <Compile Include="Files\Importable\LandXmlFile.cs" />
     <Compile Include="Helpers\LandXmlHelper.cs" />
+    <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\StationHelper.cs" />
     <Compile Include="Helpers\TrimbleJobXmlHelper.cs" />
     <Compile Include="Presenters\MainPresenter.cs">
