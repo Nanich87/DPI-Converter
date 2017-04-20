@@ -8,7 +8,7 @@
     using System.Text.RegularExpressions;
     using Contracts.Files;
     using Data;
-    using DpiConverter.Helpers;
+    using Helpers;
 
     internal class SdrFile : IImportableFile
     {
@@ -98,7 +98,7 @@
                                     zenithAngle,
                                     pointDescription);
 
-                                stationsList.Last().Observations.Add(observation);
+                                stationsList.FirstOrDefault(s=>s.StationIndex == stationIndex.ToString()).Observations.Add(observation);
 
                                 break;
                         }

@@ -28,6 +28,8 @@
 
             var rawObservations = station.Elements().Where(x => x.Name.LocalName == "RawObservation");
 
+            var previousPointName = string.Empty;
+
             foreach (var observation in rawObservations)
             {
                 var observationPointFeature = observation.Elements().FirstOrDefault(x => x.Name.LocalName == "Feature");
@@ -62,6 +64,12 @@
                 if (observationTargetPoint != null)
                 {
                     observationPointName = observationTargetPoint.Attribute("name") != null ? observationTargetPoint.Attribute("name").Value : string.Empty;
+
+                    if (previousPointName == string.Empty)
+                    {
+                        previousPointName = observationPointName;
+                    }
+
                     if (observationTargetPoint.Attribute("desc") != null)
                     {
                         observationPointDescription = observationTargetPoint.Attribute("desc").Value;
@@ -73,6 +81,11 @@
                 double slopeDistance = observation.Attribute("slopeDistance") != null ? double.Parse(observation.Attribute("slopeDistance").Value) : -1;
                 double zenithAngle = observation.Attribute("zenithAngle") != null ? double.Parse(observation.Attribute("zenithAngle").Value) : -1;
 
+                if (observationsList.Count > 0 && observation.Attribute("slopeDistance") == null && observationPointName == previousPointName)
+                {
+                    slopeDistance = observationsList.Last().SlopeDistance * System.Math.Sin(observationsList.Last().ZenithAngle * System.Math.PI / 200) / System.Math.Sin(zenithAngle*System.Math.PI / 200);
+                }
+
                 Observation currentObservation = new Observation(observationPointCode, observationPointName, targetHeight, horizAngle, slopeDistance, zenithAngle, observationPointDescription);
 
                 currentObservation.Purpose = LandXmlHelper.GetObservationPurpose(observation.Attribute("purpose").Value);
@@ -82,7 +95,7 @@
                     currentObservation.FeatureCode == string.Empty)
                 {
                     int pointNumber;
-                    
+
                     if (int.TryParse(currentObservation.TargetPoint, out pointNumber))
                     {
                         currentObservation.TargetPoint = (Properties.Settings.Default.SideshotPointNumberOffset + pointNumber).ToString();
@@ -90,6 +103,8 @@
                 }
 
                 observationsList.Add(currentObservation);
+
+                previousPointName = observationPointName;
             }
 
             return observationsList;
