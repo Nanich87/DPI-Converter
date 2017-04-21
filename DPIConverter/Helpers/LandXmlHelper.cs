@@ -28,8 +28,6 @@
 
             var rawObservations = station.Elements().Where(x => x.Name.LocalName == "RawObservation");
 
-            var previousPointName = string.Empty;
-
             foreach (var observation in rawObservations)
             {
                 var observationPointFeature = observation.Elements().FirstOrDefault(x => x.Name.LocalName == "Feature");
@@ -65,11 +63,6 @@
                 {
                     observationPointName = observationTargetPoint.Attribute("name") != null ? observationTargetPoint.Attribute("name").Value : string.Empty;
 
-                    if (previousPointName == string.Empty)
-                    {
-                        previousPointName = observationPointName;
-                    }
-
                     if (observationTargetPoint.Attribute("desc") != null)
                     {
                         observationPointDescription = observationTargetPoint.Attribute("desc").Value;
@@ -81,9 +74,11 @@
                 double slopeDistance = observation.Attribute("slopeDistance") != null ? double.Parse(observation.Attribute("slopeDistance").Value) : -1;
                 double zenithAngle = observation.Attribute("zenithAngle") != null ? double.Parse(observation.Attribute("zenithAngle").Value) : -1;
 
-                if (observationsList.Count > 0 && observation.Attribute("slopeDistance") == null && observationPointName == previousPointName)
+                Observation previousObservation = observationsList.LastOrDefault();
+
+                if (observation.Attribute("slopeDistance") == null && previousObservation != null && previousObservation.TargetPoint == observationPointName)
                 {
-                    slopeDistance = observationsList.Last().SlopeDistance * System.Math.Sin(observationsList.Last().ZenithAngle * System.Math.PI / 200) / System.Math.Sin(zenithAngle*System.Math.PI / 200);
+                    slopeDistance = previousObservation.SlopeDistance * System.Math.Sin(previousObservation.ZenithAngle * System.Math.PI / 200) / System.Math.Sin(zenithAngle * System.Math.PI / 200);
                 }
 
                 Observation currentObservation = new Observation(observationPointCode, observationPointName, targetHeight, horizAngle, slopeDistance, zenithAngle, observationPointDescription);
@@ -103,8 +98,6 @@
                 }
 
                 observationsList.Add(currentObservation);
-
-                previousPointName = observationPointName;
             }
 
             return observationsList;

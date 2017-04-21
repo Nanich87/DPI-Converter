@@ -86,7 +86,7 @@
                                 }
 
                                 double zenithAngle = double.Parse(line.Substring(52, 16).Trim());
-                                string pointDescription =line.Substring(84, 16).Trim();
+                                string pointDescription = line.Substring(84, 16).Trim();
                                 string pointCode = Observation.PredefinedCodes.Contains(pointDescription.ToLower()) ? pointDescription : string.Empty;
 
                                 Observation observation = new Observation(
@@ -98,7 +98,7 @@
                                     zenithAngle,
                                     pointDescription);
 
-                                stationsList.FirstOrDefault(s=>s.StationIndex == stationIndex.ToString()).Observations.Add(observation);
+                                stationsList.FirstOrDefault(s => s.StationIndex == stationIndex.ToString()).Observations.Add(observation);
 
                                 break;
                         }
