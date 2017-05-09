@@ -62,6 +62,7 @@
                 if (observationTargetPoint != null)
                 {
                     observationPointName = observationTargetPoint.Attribute("name") != null ? observationTargetPoint.Attribute("name").Value : string.Empty;
+
                     if (observationTargetPoint.Attribute("desc") != null)
                     {
                         observationPointDescription = observationTargetPoint.Attribute("desc").Value;
@@ -73,6 +74,13 @@
                 double slopeDistance = observation.Attribute("slopeDistance") != null ? double.Parse(observation.Attribute("slopeDistance").Value) : -1;
                 double zenithAngle = observation.Attribute("zenithAngle") != null ? double.Parse(observation.Attribute("zenithAngle").Value) : -1;
 
+                Observation previousObservation = observationsList.LastOrDefault();
+
+                if (observation.Attribute("slopeDistance") == null && previousObservation != null && previousObservation.TargetPoint == observationPointName)
+                {
+                    slopeDistance = previousObservation.SlopeDistance * System.Math.Sin(previousObservation.ZenithAngle * System.Math.PI / 200) / System.Math.Sin(zenithAngle * System.Math.PI / 200);
+                }
+
                 Observation currentObservation = new Observation(observationPointCode, observationPointName, targetHeight, horizAngle, slopeDistance, zenithAngle, observationPointDescription);
 
                 currentObservation.Purpose = LandXmlHelper.GetObservationPurpose(observation.Attribute("purpose").Value);
@@ -82,7 +90,7 @@
                     currentObservation.FeatureCode == string.Empty)
                 {
                     int pointNumber;
-                    
+
                     if (int.TryParse(currentObservation.TargetPoint, out pointNumber))
                     {
                         currentObservation.TargetPoint = (Properties.Settings.Default.SideshotPointNumberOffset + pointNumber).ToString();
