@@ -32,9 +32,9 @@
 
                 double targetHeight = -1.000;
 
-                while (reader.EndOfStream == false)
+                try
                 {
-                    try
+                    while (reader.EndOfStream == false)
                     {
                         line = reader.ReadLine();
                         if (line.Trim().Length < 4)
@@ -95,17 +95,28 @@
                                     zenithAngle,
                                     pointDescription);
 
-                                stationsList.FirstOrDefault(s => s.StationIndex == stationIndex.ToString()).Observations.Add(observation);
+                                Station lastStation = stationsList.LastOrDefault();
+                                if (lastStation == null)
+                                {
+                                    throw new ArgumentNullException("Няма добавена станция!");
+
+                                }
+
+                                lastStation.Observations.Add(observation);
 
                                 break;
                         }
 
                         rowNumber++;
                     }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        LogHelper.Log(string.Format("Невалиден формат на данните на ред: {0} Записът се пропуска: {1}", rowNumber, line));
-                    }
+                }
+                catch (ArgumentNullException ane)
+                {
+                    LogHelper.Error(ane.Message);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    LogHelper.Error(string.Format("Невалиден формат на данните на ред: {0} Записът се пропуска: {1}", rowNumber, line));
                 }
             }
         }

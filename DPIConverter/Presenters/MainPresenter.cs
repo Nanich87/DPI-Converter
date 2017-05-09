@@ -9,6 +9,7 @@
     using System.Windows.Forms;
     using Contracts.Files;
     using Data;
+    using DpiConverter.Helpers;
     using Files.Exportable;
 
     public partial class MainPresenter : Form
@@ -32,10 +33,21 @@
 
         private void InitializeDataBindings()
         {
-            this.uxTextBoxSelectedStation.DataBindings.Add("Text", this.stationsBindingSource, "FullName", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.uxTextBoxInstrumentHeight.DataBindings.Add("Text", this.stationsBindingSource, "InstrumentHeight", true, DataSourceUpdateMode.OnPropertyChanged);
+            Binding stationFullNameBinding = this.uxTextBoxSelectedStation.DataBindings.Add("Text", this.stationsBindingSource, "FullName", true, DataSourceUpdateMode.OnPropertyChanged);
+            Binding instrumentHeightBinding = this.uxTextBoxInstrumentHeight.DataBindings.Add("Text", this.stationsBindingSource, "InstrumentHeight", true, DataSourceUpdateMode.OnPropertyChanged);
             this.uxCheckBoxUseStation.DataBindings.Add("Checked", this.stationsBindingSource, "UseStation", false, DataSourceUpdateMode.OnPropertyChanged);
             this.uxDataGridViewObservations.DataBindings.Add("DataSource", this.stationsBindingSource, "Observations", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            stationFullNameBinding.BindingComplete += new BindingCompleteEventHandler(StationBindingComplete);
+            instrumentHeightBinding.BindingComplete += new BindingCompleteEventHandler(StationBindingComplete);
+        }
+
+        void StationBindingComplete(object sender, BindingCompleteEventArgs e)
+        {
+            if (e.BindingCompleteState != BindingCompleteState.Success)
+            {
+                LogHelper.Error(e.ErrorText);
+            }
         }
 
         private void InitializeStationsListBox()

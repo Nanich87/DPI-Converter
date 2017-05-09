@@ -51,6 +51,7 @@
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Невалидно име на станция!");
+                    // return;
                 }
 
                 string featureCode = StationHelper.ParseCode(value);
@@ -129,7 +130,7 @@
             {
                 if (value > 99 || value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Височината на инструмента не може да бъде по-малка от 0.000 или по-голяма от 99 метра!");
+                    throw new ArgumentOutOfRangeException("Височина на инструмента", "Височината на инструмента не може да бъде по-малка от 0.000m или по-голяма от 99m!");
                 }
 
                 this.instrumentHeight = value;
