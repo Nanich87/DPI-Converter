@@ -8,6 +8,7 @@
 
     internal class Station
     {
+        private static int uniqueIndex = 0;
         private string stationIndex;
         private string stationName;
         private double instrumentHeight;
@@ -133,6 +134,11 @@
 
                 this.instrumentHeight = value;
             }
+        }
+
+        public static int GenerateUniqueIndex()
+        {
+            return ++Station.uniqueIndex;
         }
 
         public void ResetVerticalAngleMisclosure()

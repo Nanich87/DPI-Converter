@@ -5,7 +5,6 @@
     using System.ComponentModel;
     using System.IO;
     using System.Linq;
-    using System.Text.RegularExpressions;
     using Contracts.Files;
     using Data;
     using DpiConverter.Helpers;
@@ -24,22 +23,21 @@
             this.validateFile = validateFile;
         }
 
-        public void Open(string file, ICollection<Station> stationsList)
+        public void Open(string path, ICollection<Station> stationsList)
         {
-            using (StreamReader reader = new StreamReader(file))
+            using (StreamReader reader = new StreamReader(path))
             {
                 int rowNumber = 1;
+                string line = string.Empty;
 
-                int stationIndex = 1;
                 double targetHeight = -1.000;
 
                 while (reader.EndOfStream == false)
                 {
                     try
                     {
-                        string line = reader.ReadLine();
-                        string[] data = Regex.Replace(line, @"\s\s+", " ").Trim().Split(' ');
-                        if (data.Length == 0)
+                        line = reader.ReadLine();
+                        if (line.Trim().Length < 4)
                         {
                             continue;
                         }
@@ -50,6 +48,7 @@
                         {
                             case "02TP":
                             case "02IC":
+                                string stationIndex = Station.GenerateUniqueIndex().ToString();
                                 string stationPoint = line.Substring(4, 16).Trim();
                                 string stationCode = line.Substring(84, 16).Trim();
                                 double stationHeight = double.Parse(line.Substring(68, 16).Trim());
@@ -57,15 +56,13 @@
                                 BindingList<Observation> observations = new BindingList<Observation>();
 
                                 Station station = new Station(
-                                    stationIndex.ToString(),
+                                    stationIndex,
                                     stationCode,
                                     stationPoint,
                                     stationHeight,
                                     observations);
 
                                 stationsList.Add(station);
-
-                                stationIndex++;
 
                                 break;
                             case "03NM":
@@ -107,7 +104,7 @@
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        LogHelper.Log(string.Format("Невалиден формат на данните на ред: {0}", rowNumber));
+                        LogHelper.Log(string.Format("Невалиден формат на данните на ред: {0} Записът се пропуска: {1}", rowNumber, line));
                     }
                 }
             }
