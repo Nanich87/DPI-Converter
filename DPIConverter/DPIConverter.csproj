@@ -114,6 +114,14 @@
     <EmbeddedResource Include="Presenters\SettingsPresenter.resx">
       <DependentUpon>SettingsPresenter.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="JobXMLSchema-5.64.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="LandXML-1.0.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

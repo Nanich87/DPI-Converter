@@ -115,6 +115,7 @@
             this.uxGroupBoxChangeRows = new System.Windows.Forms.GroupBox();
             this.uxButtonAddNewObservation = new System.Windows.Forms.Button();
             this.uxButtonDeleteSelectedObservations = new System.Windows.Forms.Button();
+            this.uxLabelProgramBuild = new System.Windows.Forms.Label();
             this.uxMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxDataGridViewObservations)).BeginInit();
             this.uxGroupBoxChangeCode.SuspendLayout();
@@ -395,11 +396,12 @@
             // 
             this.uxLabelProgramVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.uxLabelProgramVersion.AutoSize = true;
-            this.uxLabelProgramVersion.Location = new System.Drawing.Point(659, 421);
+            this.uxLabelProgramVersion.Location = new System.Drawing.Point(654, 418);
             this.uxLabelProgramVersion.Name = "uxLabelProgramVersion";
-            this.uxLabelProgramVersion.Size = new System.Drawing.Size(81, 13);
+            this.uxLabelProgramVersion.Size = new System.Drawing.Size(82, 13);
             this.uxLabelProgramVersion.TabIndex = 10;
-            this.uxLabelProgramVersion.Text = "версия 0.7.4";
+            this.uxLabelProgramVersion.Text = "Версия 0.7.4";
+            this.uxLabelProgramVersion.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // uxGroupBoxChangeCode
             // 
@@ -412,7 +414,7 @@
             this.uxGroupBoxChangeCode.Controls.Add(this.uxLabelOldCodeValue);
             this.uxGroupBoxChangeCode.Location = new System.Drawing.Point(161, 400);
             this.uxGroupBoxChangeCode.Name = "uxGroupBoxChangeCode";
-            this.uxGroupBoxChangeCode.Size = new System.Drawing.Size(492, 50);
+            this.uxGroupBoxChangeCode.Size = new System.Drawing.Size(472, 50);
             this.uxGroupBoxChangeCode.TabIndex = 11;
             this.uxGroupBoxChangeCode.TabStop = false;
             this.uxGroupBoxChangeCode.Text = "Преименуване на кодове";
@@ -502,11 +504,23 @@
             this.uxButtonDeleteSelectedObservations.UseVisualStyleBackColor = true;
             this.uxButtonDeleteSelectedObservations.Click += new System.EventHandler(this.DeleteSelectedObservationsButtonClickedEventHandler);
             // 
+            // uxLabelProgramBuild
+            // 
+            this.uxLabelProgramBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxLabelProgramBuild.AutoSize = true;
+            this.uxLabelProgramBuild.Location = new System.Drawing.Point(650, 437);
+            this.uxLabelProgramBuild.Name = "uxLabelProgramBuild";
+            this.uxLabelProgramBuild.Size = new System.Drawing.Size(86, 13);
+            this.uxLabelProgramBuild.TabIndex = 14;
+            this.uxLabelProgramBuild.Text = "Build: 170522";
+            this.uxLabelProgramBuild.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // MainPresenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 462);
+            this.Controls.Add(this.uxLabelProgramBuild);
             this.Controls.Add(this.uxGroupBoxChangeRows);
             this.Controls.Add(this.uxButtonCalculateIndexErrors);
             this.Controls.Add(this.uxGroupBoxChangeCode);
@@ -540,5 +554,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label uxLabelProgramBuild;
     }
 }
